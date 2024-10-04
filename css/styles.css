@@ -24,7 +24,7 @@ header {
   display: flex;
   justify-content: space-between; /* 좌우로 분리하여 정렬 */
   align-items: center; /* 수직 중앙 정렬 */
-  padding: 20px 50px; /* 상하 20px, 좌우 50px 패딩 추가 */
+  padding: 28px 120px; /* 상하 20px, 좌우 50px 패딩 추가 */
 }
 
 /* 로고 스타일 */
@@ -60,53 +60,53 @@ header {
 
 /* 헤더가 고정되었을 때 아래 컨텐츠가 헤더와 겹치지 않도록 상단 여백 추가 */
 body {
-  padding-top: 100px; /* 헤더 높이만큼 상단에 여백 추가 */
+  padding-top: 120px; /* 헤더 높이만큼 상단에 여백 추가 */
 }
 
+.intro {
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 부모 요소에 Flexbox 스타일을 적용 */
+/* 전체 섹션 스타일 */
 #intro-section {
   position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none; /* 배경 이미지 제거 */
+}
+
+/* 첫 번째 이미지의 부모 요소 스타일 */
+.intro-image1-wrapper {
   background-image: url("../images/gradation2.png"); /* 배경 이미지 설정 */
-  background-size: cover; /* 배경 이미지가 섹션 전체를 덮도록 설정 */
-  background-position: center; /* 배경 이미지 중앙 정렬 */
-  background-repeat: no-repeat; /* 배경 이미지 반복 없음 */
-  padding: 80px 0; /* 섹션 상하 여백 */
-  display: flex; /* Flexbox 사용 */
-  justify-content: center; /* 내부 콘텐츠 중앙 정렬 */
+  background-size: 100% 100%; /* 배경 이미지를 가로, 세로 모두 꽉 채움 */
+  background-position: center; /* 배경 이미지를 중앙에 배치 */
+  background-repeat: no-repeat; /* 이미지 반복 없음 */
+  width: 100vw; /* 부모 요소의 너비를 화면 전체로 설정 */
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-/* 배경 위에 반투명 오버레이 추가 */
-#intro-section::after {
-  content: ""; /* 비어 있는 가상 요소 생성 */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* 검정색 반투명 오버레이 */
-  z-index: 1; /* 오버레이가 배경 이미지 위에 표시되도록 설정 */
-}
-
-.intro-images {
+.intro-image2-wrapper {
   display: flex;
-  flex-direction: column; /* 이미지 세로 배치 */
-  align-items: center; /* 중앙 정렬 */
-  gap: 20px; /* 이미지 사이 간격 */
+  justify-content: center;
+  align-items: center;
 }
 
+/* 이미지 크기 조정 */
 .intro-image1 {
-  width: 1000px;
+  width: 1000px; /* 너비 조정 */
   height: 373px;
 }
 
+/* 아래 막대 이미지 스타일 */
 .intro-image2 {
-  width: 1000px;
-  height: 79px;
-}
-
-.main-wrapper {
-  width: 80%;
-  margin: 0 auto; /* 상하 여백은 0, 좌우 여백은 자동 설정하여 중앙 정렬 */
+  width: 1000px; /* 너비가 첫 번째 이미지와 동일하게 */
+  height: 79px; /* 기존 높이 유지 */
 }
 
 /* 배너 스타일 */
@@ -116,7 +116,6 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-
   background-color: #000; /* 배경색 검정 */
 }
 
@@ -125,19 +124,19 @@ body {
   font-weight: bold;
   background: linear-gradient(
     90deg,
-    #2400ff,
-    #ad00ff
-  ); /* 파란색에서 보라색으로 그라데이션 */
+    #003eff,
+    /* 시작 색상: 파란색 */ #8b44e4 /* 끝 색상: 보라색 */
+  ); /* 정확한 파란색(#003EFF)에서 보라색(#8B44E4)으로 그라데이션 */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; /* 그라데이션 텍스트 */
   margin-bottom: 20px;
 }
 
 .banner-sub {
-  font-size: 22px;
-  color: #e0e0e0; /* 본문 색상 */
-  line-height: 1.6; /* 줄 간격 */
-  margin-bottom: 40px; /* 아래 여백 */
+  font-size: 22px; /* Figma의 폰트 크기 값 적용 */
+  color: #d5d5d5; /* Figma의 텍스트 색상 코드 적용 */
+  line-height: 34px; /* Figma에서 지정된 줄 간격 */
+  margin-bottom: 60px; /* 아래 여백 유지 */
 }
 
 .showtimes-button {
@@ -148,6 +147,12 @@ body {
   font-weight: 700;
   padding: 15px 30px;
   cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.main-wrapper {
+  width: 1244px;
+  margin: 0 auto; /* 상하 여백은 0, 좌우 여백은 자동 설정하여 중앙 정렬 */
 }
 
 /* 각 섹션 스타일 */
