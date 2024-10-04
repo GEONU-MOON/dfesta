@@ -207,14 +207,12 @@ section {
 }
 
 .slider img {
-  width: calc(
-    100% / 3 - 20px
-  ); /* 이미지 3개가 가로로 꽉 차게 배치 (간격 포함) */
-  height: 300px; /* 정사각형 비율 유지 */
-  margin: 0 10px; /* 좌우 간격 설정 */
-  border-radius: 15px; /* 둥근 모서리 */
-  object-fit: cover; /* 이미지가 잘리더라도 정사각형 유지 */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
+  width: calc(100% / 3 - 20px);
+  aspect-ratio: 1 / 1; /* 정사각형 비율 설정 */
+  margin: 0 10px;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* 슬라이더 버튼 위치 조정 */
