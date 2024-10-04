@@ -85,7 +85,7 @@ body {
   background-size: 100% 100%; /* 배경 이미지를 가로, 세로 모두 꽉 채움 */
   background-position: center; /* 배경 이미지를 중앙에 배치 */
   background-repeat: no-repeat; /* 이미지 반복 없음 */
-  width: 100vw; /* 부모 요소의 너비를 화면 전체로 설정 */
+  width: calc(100vw - 15px); /* 스크롤바 너비만큼 보정 */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -142,6 +142,7 @@ body {
 .showtimes-button {
   background-color: #2400ff;
   border: none;
+  border-radius: 6px;
   color: white;
   font-size: 20px;
   font-weight: 700;
@@ -264,6 +265,7 @@ section {
 
 #location,
 #video,
+#event,
 #exhibition,
 #movie,
 #experience,
@@ -272,27 +274,90 @@ section {
   font-size: 48px;
 }
 
+.event-content {
+  width: 100%;
+  background: #1c1c1c; /* 컨텐츠 영역의 배경색 */
+  text-align: center;
+  padding: 50px 0; /* 상하 30px, 좌우 0으로 설정 */
+  margin-bottom: 40px;
+}
+
+/* 타이틀 스타일 */
+.event-heading {
+  font-size: 28px;
+  color: #ffffff; /* 타이틀 텍스트 색상 */
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* 설명 텍스트 스타일 */
+.event-description {
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  line-height: 1.6; /* 줄 간격 추가 */
+}
+
+/* 강조 텍스트 스타일 */
+.promo-highlight {
+  color: #ffd43c; /* 프로모션 텍스트 하이라이트 */
+  font-weight: bold;
+}
+
+/* 폼 스타일 */
 form {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px; /* 입력란과 버튼 사이 간격 설정 */
 }
 
-form input {
-  padding: 10px;
-  margin-right: 10px;
-  background: #333333; /* 입력란 배경 검정으로 설정 */
-  border: 2px solid #7d00ff; /* 입력란 테두리 색상 변경 */
-  color: #ffffff; /* 입력란 텍스트 흰색 */
+/* 이메일 입력란 스타일 */
+.email-input {
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  width: 570px; /* 입력란 너비 */
+  border: none;
+  border-radius: 5px;
+  background: #1c1c1c; /* 입력란 배경 검정으로 설정 */
+  border: 1.5px solid #333333; /* 입력란 테두리 색상 */
+  color: #9f9f9f; /* 입력란 텍스트 흰색 */
   outline: none;
 }
 
-form button {
-  padding: 10px 20px;
-  background: #7d00ff;
+/* 버튼 스타일 */
+.continue-button {
+  padding: 15px;
+  width: 122px;
+  height: 55.5px;
+  background: #333333;
   border: none;
-  color: #ffffff; /* 버튼 텍스트 흰색 */
+  border-radius: 5px;
+  color: #a4a4a4; /* 버튼 텍스트 흰색 */
+  font-weight: bold;
   cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* 약관 텍스트 스타일 */
+.terms-text {
+  font-size: 15px;
+  color: #9f9f9f;
+  margin-top: 15px;
+}
+
+/* 링크 텍스트 스타일 */
+.terms-link,
+.privacy-link {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.insta-image {
+  width: 581px;
+  height: 577px;
+  margin: 0 auto; /* 부모 요소 안에서 중앙 정렬 */
 }
 
 /* 전체 푸터 스타일 */
