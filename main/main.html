@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive K-Pop Experience</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <img src="../images/title.png" alt="DFESTA Logo" class="logo" />
+        <div class="header-buttons">
+          <!-- <button class="buy-tickets">Buy Tickets</button> -->
+          <img src="../images/people.png" alt="people Logo" class="people" />
+        </div>
+      </div>
+    </header>
+    <section id="intro-section" class="intro">
+      <div class="intro-images">
+        <img
+          src="../images/banner-image.jpg"
+          alt="Intro Image 1"
+          class="intro-image1"
+        />
+        <img src="../images/bar.png" alt="Intro Image 2" class="intro-image2" />
+      </div>
+    </section>
+
+    <div class="main-wrapper">
+      <section id="home" class="banner">
+        <div class="banner-title">
+          GET READY FOR THIS <br />IMMERSIVE<br />
+          K-POP EXPERIENCE
+        </div>
+        <div class="banner-sub">
+          D'Festa is a completely new K-pop exhibition showcasing exclusive
+          content featuring Enhypen, <br />TXT, Stray Kids, NCT Dream, Twice,
+          NCT 127, Seventeen, BTS, and Nu'est.
+        </div>
+        <button class="showtimes-button">View Showtimes</button>
+      </section>
+
+      <section id="location">
+        <div class="section-title">Location</div>
+        <div class="slider-container">
+          <div class="slider-wrapper">
+            <div class="slider" id="dynamic-slider"></div>
+          </div>
+          <div class="slider-buttons-container">
+            <button class="slider-button prev" onclick="slide(-1)">❮</button>
+            <button class="slider-button next" onclick="slide(1)">❯</button>
+          </div>
+        </div>
+        <div class="location-desc">The Source OC, Anaheim, CA</div>
+      </section>
+
+      <section id="video">
+        <div class="section-title">Video</div>
+        <div class="video-player">
+          <iframe
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="K-Pop Experience Video"
+          ></iframe>
+        </div>
+      </section>
+
+      <section id="event">
+        <div class="section-title">Event</div>
+        <form>
+          <input type="email" placeholder="Enter your email" />
+          <button type="submit">Register</button>
+        </form>
+      </section>
+
+      <section id="exhibition">
+        <div class="section-title">The Exhibition</div>
+        <div class="section-desc">
+          Discover the highlights of K-Pop artists with curated displays and
+          exhibits.
+        </div>
+        <div class="image-gallery">
+          <img src="exhibition1.jpg" alt="Exhibition Image 1" />
+          <img src="exhibition2.jpg" alt="Exhibition Image 2" />
+        </div>
+      </section>
+
+      <section id="movie">
+        <div class="section-title">The Movie</div>
+        <div class="section-desc">
+          Watch exclusive behind-the-scenes and interviews with your favorite
+          K-Pop stars.
+        </div>
+        <div class="image-gallery">
+          <img src="movie1.jpg" alt="Movie Image 1" />
+          <img src="movie2.jpg" alt="Movie Image 2" />
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="section-title">The Experience</div>
+        <div class="section-desc">
+          Immerse yourself in the world of K-Pop with interactive exhibits and
+          more.
+        </div>
+        <div class="image-gallery">
+          <img src="experience1.jpg" alt="Experience Image 1" />
+          <img src="experience2.jpg" alt="Experience Image 2" />
+        </div>
+      </section>
+
+      <section id="retail">
+        <div class="section-title">The Retail</div>
+        <div class="section-desc">Shop exclusive merchandise and more.</div>
+        <div class="image-gallery">
+          <img src="retail1.jpg" alt="Retail Image 1" />
+          <img src="retail2.jpg" alt="Retail Image 2" />
+        </div>
+      </section>
+    </div>
+    <footer>
+      <div class="footer-top">
+        <img
+          src="../images/footer-logo.png"
+          alt="DFESTA Logo"
+          class="footer-logo"
+        />
+        <div class="social-icons">
+          <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+          <a href="#" target="_blank"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>Copyright © 2024 DFESTA. All rights reserved.</div>
+      </div>
+    </footer>
+    <script src="../js/main.js"></script>
+  </body>
+</html>
