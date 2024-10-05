@@ -378,6 +378,10 @@ form {
   color: #ffa929;
 }
 
+.secondary-wrapper section:nth-of-type(5) .second-section-title {
+  color: #ce43ff;
+}
+
 .section-desc {
   font-size: 20px;
   margin-bottom: 40px;
