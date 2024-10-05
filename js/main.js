@@ -1,45 +1,134 @@
-const slider = document.getElementById("dynamic-slider");
-const images = [
-  "../images/LOCATION/IMG_0010.png",
-  "../images/LOCATION/IMG_0016.png",
-  "../images/LOCATION/IMG_0019.png",
-  "../images/LOCATION/IMG_0026.png",
-  "../images/LOCATION/IMG_0042.png",
-  "../images/LOCATION/IMG_0051.png",
-  "../images/LOCATION/IMG_0056.png",
-  "../images/LOCATION/IMG_9990.png",
-  "../images/LOCATION/IMG_9993.png",
-  "../images/LOCATION/IMG_9999.png",
-];
+const sliders = {
+  location: document.getElementById("location-slider"),
+  exhibition: document.getElementById("exhibition-slider"),
+  movie: document.getElementById("movie-slider"),
+  experience: document.getElementById("experience-slider"),
+  artists: document.getElementById("artists-slider"),
+  retail: document.getElementById("retail-slider"),
+};
 
-// 이미지 동적으로 생성
-images.forEach((src) => {
-  const img = document.createElement("img");
-  img.src = src;
-  slider.appendChild(img);
+// 각 섹션별 이미지 경로 배열 정의
+const images = {
+  location: [
+    "../images/LOCATION/IMG_0010.png",
+    "../images/LOCATION/IMG_0016.png",
+    "../images/LOCATION/IMG_0019.png",
+    "../images/LOCATION/IMG_0026.png",
+    "../images/LOCATION/IMG_0042.png",
+    "../images/LOCATION/IMG_0051.png",
+    "../images/LOCATION/IMG_0056.png",
+    "../images/LOCATION/IMG_9990.png",
+    "../images/LOCATION/IMG_9993.png",
+    "../images/LOCATION/IMG_9999.png",
+  ],
+  exhibition: [
+    "../images/01_the_exhibition/IMG_0062.png",
+    "../images/01_the_exhibition/IMG_0081.png",
+    "../images/01_the_exhibition/IMG_0084.png",
+    "../images/01_the_exhibition/IMG_0090.png",
+    "../images/01_the_exhibition/IMG_0114.png",
+    "../images/01_the_exhibition/IMG_0118.png",
+    "../images/01_the_exhibition/IMG_0129.png",
+    "../images/01_the_exhibition/IMG_0143.png",
+    "../images/01_the_exhibition/IMG_0149.png",
+    "../images/01_the_exhibition/IMG_0151.png",
+    "../images/01_the_exhibition/IMG_0166.png",
+    "../images/01_the_exhibition/IMG_0175.png",
+    "../images/01_the_exhibition/IMG_0192.png",
+  ],
+  movie: [
+    "../images/02_the_movie/IMG_0206.png",
+    "../images/02_the_movie/IMG_0207.png",
+    "../images/02_the_movie/IMG_0218.png",
+    "../images/02_the_movie/IMG_0220.png",
+    "../images/02_the_movie/IMG_0222.png",
+    "../images/02_the_movie/IMG_0223.png",
+    "../images/02_the_movie/IMG_0229.png",
+    "../images/02_the_movie/IMG_0239.png",
+    "../images/02_the_movie/IMG_0242.png",
+    "../images/02_the_movie/IMG_0248.png",
+  ],
+  experience: [
+    "../images/03_the_experience/IMG_0259.png",
+    "../images/03_the_experience/IMG_0289.png",
+    "../images/03_the_experience/IMG_0307.png",
+    "../images/03_the_experience/IMG_0317.png",
+    "../images/03_the_experience/IMG_0342.png",
+    "../images/03_the_experience/IMG_0371.png",
+    "../images/03_the_experience/IMG_0378.png",
+    "../images/03_the_experience/IMG_0394.png",
+    "../images/03_the_experience/IMG_0398.png",
+    "../images/03_the_experience/IMG_0405.png",
+    "../images/03_the_experience/IMG_0407.png",
+    "../images/03_the_experience/IMG_0409.png",
+  ],
+  artists: [
+    "../images/04_Artist_Visits/IMG_0352.png",
+    "../images/04_Artist_Visits/IMG_0355.png",
+    "../images/04_Artist_Visits/로운03.jpg",
+    "../images/04_Artist_Visits/스테이씨01.jpg",
+    "../images/04_Artist_Visits/스테이씨02.jpg",
+    "../images/04_Artist_Visits/스테이씨03.jpg",
+    "../images/04_Artist_Visits/엔믹스01.jpg",
+    "../images/04_Artist_Visits/엔믹스02.jpg",
+    "../images/04_Artist_Visits/여자아이들01.jpg",
+    "../images/04_Artist_Visits/여자아이들02.jpg",
+    "../images/04_Artist_Visits/여자아이들03.jpg",
+  ],
+  retail: [
+    "../images/05_the_retail/IMG_0410.png",
+    "../images/05_the_retail/IMG_0414.png",
+    "../images/05_the_retail/IMG_0419.png",
+    "../images/05_the_retail/IMG_0430.png",
+    "../images/05_the_retail/IMG_0435.png",
+    "../images/05_the_retail/IMG_0441.png",
+    "../images/05_the_retail/IMG_0445.png",
+    "../images/05_the_retail/IMG_0449.png",
+    "../images/05_the_retail/IMG_0457.png",
+    "../images/05_the_retail/IMG_0463.png",
+    "../images/05_the_retail/IMG_0492.png",
+    "../images/05_the_retail/IMG_0496.png",
+    "../images/05_the_retail/IMG_0498.png",
+    "../images/05_the_retail/IMG_0500.png",
+  ],
+};
+
+// 각 슬라이더에 이미지 동적 생성
+Object.keys(sliders).forEach((key) => {
+  images[key].forEach((src) => {
+    const img = document.createElement("img");
+    img.src = src;
+    sliders[key].appendChild(img);
+  });
 });
 
-let currentIndex = 0; // 현재 슬라이더 시작 인덱스
-const totalImages = images.length; // 전체 이미지 개수
-const visibleImages = 3; // 화면에 보이는 이미지 개수
-const groupSize = 3; // 이동 시 묶음 단위 크기
-const imageMargin = 20; // 이미지 간의 여백
-const imageWidth = slider.querySelector("img").clientWidth + imageMargin; // 이미지 하나의 전체 너비
-const totalGroups = Math.ceil(totalImages / groupSize); // 전체 그룹 수 계산
+let currentIndex = {
+  location: 0,
+  exhibition: 0,
+  movie: 0,
+  experience: 0,
+  artists: 0,
+  retail: 0,
+};
+
+const groupSize = 3;
 
 // 슬라이더 이동 함수
-function slide(direction) {
-  // 이동할 그룹의 인덱스를 설정
-  currentIndex += direction * groupSize;
+function slide(section, direction) {
+  const slider = sliders[section];
+  const totalImages = images[section].length;
+  const totalGroups = Math.ceil(totalImages / groupSize);
+
+  currentIndex[section] += direction * groupSize;
 
   // 슬라이더의 이동 범위 제한
-  if (currentIndex < 0) {
-    currentIndex = (totalGroups - 1) * groupSize; // 마지막 그룹으로 이동
-  } else if (currentIndex >= totalImages) {
-    currentIndex = 0; // 첫 번째 그룹으로 이동
+  if (currentIndex[section] < 0) {
+    currentIndex[section] = (totalGroups - 1) * groupSize; // 마지막 그룹으로 이동
+  } else if (currentIndex[section] >= totalImages) {
+    currentIndex[section] = 0; // 첫 번째 그룹으로 이동
   }
 
   // 슬라이더 이동 거리 계산 (3개씩 이동하므로 전체 너비를 3개 단위로 계산)
-  const offset = -(currentIndex / groupSize) * 100;
+  const offset = -(currentIndex[section] / groupSize) * 100;
   slider.style.transform = `translateX(${offset}%)`;
 }
