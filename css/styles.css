@@ -205,6 +205,13 @@ section {
   justify-content: center;
 }
 
+.location-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 /* 로케이션 아이콘 스타일 */
 .location-logo img {
   width: 40px;
@@ -377,7 +384,6 @@ form {
   height: 577px;
   margin: 0 auto; /* 이미지 중앙 정렬 */
 }
-
 /* ===========================
    Bridge Image Styles (브리지 이미지)
 ============================== */
@@ -526,4 +532,246 @@ footer {
   justify-content: center; /* 수평 중앙 정렬 */
   align-items: center; /* 수직 중앙 정렬 */
   text-decoration: none; /* 밑줄 제거 */
+}
+
+/* ===========================
+   반응형 스타일 (max-width: 768px)
+============================== */
+
+@media (max-width: 768px) {
+  section {
+    margin-bottom: 50px; /* 하단 여백 */
+  }
+  /* 헤더 스타일 수정 */
+  header {
+    width: 375px; /* 헤더 너비 */
+    height: 60px; /* 헤더 높이 */
+    top: 30px; /* 헤더의 top 위치 */
+  }
+
+  /* 로고 이미지 스타일 수정 */
+  .logo {
+    width: 267px; /* 로고 너비 */
+    height: 33px; /* 로고 높이 */
+    position: absolute; /* 위치 속성 절대값 */
+    top: 14px; /* 로고의 top 위치 */
+    left: 24px; /* 로고의 left 위치 */
+  }
+
+  /* 프로필 아이콘 스타일 수정 */
+  .people {
+    width: 24px; /* 아이콘 너비 */
+    height: 24px; /* 아이콘 높이 */
+    position: absolute; /* 위치 속성 절대값 */
+    top: 18px; /* 아이콘의 top 위치 */
+    left: 327px; /* 아이콘의 left 위치 */
+    padding: 3px 4px; /* padding 설정 */
+  }
+  .intro-image1-wrapper {
+    background-size: 100% 196px; /* 배경 이미지 크기 */
+  }
+
+  .intro-image1 {
+    width: 327px;
+    height: 122px;
+  }
+
+  .intro-image2 {
+    width: 320px;
+    height: 32px;
+  }
+
+  .banner-title {
+    font-size: 32px; /* 폰트 크기 줄임 */
+    font-weight: 800;
+    line-height: 40px;
+    text-align: center;
+    margin-bottom: 15px;
+    max-width: 324px; /* 최대 너비 300px로 제한 */
+  }
+
+  .banner-sub {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    margin-bottom: 30px;
+    max-width: 300px; /* 최대 너비 300px로 제한 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+  }
+
+  .showtimes-button {
+    width: 200px; /* 버튼 너비 */
+    height: 50px; /* 버튼 높이 */
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21.6px;
+    text-align: center;
+    padding: 12px 25px;
+  }
+
+  .main-wrapper,
+  .secondary-wrapper {
+    width: 327px; /* 최대 너비 */
+    margin: 0 auto; /* 중앙 정렬 */
+  }
+
+  .section-title {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    border-bottom: 2px solid transparent; /* 투명 테두리 */
+    border-image: linear-gradient(
+      to right,
+      #2400ff,
+      #ad00ff
+    ); /* 그라데이션 테두리 */
+    border-image-slice: 1;
+  }
+
+  .location-desc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .location-row {
+    display: flex; /* 로케이션 아이콘과 desc1을 나란히 정렬 */
+    align-items: center;
+  }
+
+  /* 로케이션 아이콘 스타일 */
+  .location-logo img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain; /* 이미지 비율 유지하며 채우기 */
+    margin-right: 10px; /* 텍스트와의 간격 */
+  }
+
+  /* 로케이션 첫 번째 텍스트 (장소명) */
+  .location-desc1 {
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  /* 로케이션 두 번째 텍스트 (주소) */
+  .location-desc2 {
+    margin-top: 10px; /* 상단 여백 */
+    font-size: 15px;
+    font-weight: 500;
+    color: #6f889f;
+    text-align: center;
+  }
+
+  .video-image {
+    width: 327px;
+    height: 186px;
+  }
+
+  .event-content {
+    width: 100%;
+    height: 279px;
+    background: #1c1c1c; /* 섹션 배경색 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    padding-top: 25px;
+    margin-bottom: 40px; /* 섹션 하단 간격 */
+  }
+
+  /* 이벤트 섹션의 제목 스타일 */
+  .event-heading {
+    font-size: 20px;
+    color: #ffffff; /* 텍스트 색상 */
+    font-weight: 800;
+    margin-bottom: 10px;
+    line-height: 24px;
+    padding-top: 25px;
+  }
+
+  /* 이벤트 섹션 설명 텍스트 스타일 */
+  .event-description {
+    width: 279px;
+    font-size: 15px;
+    color: #ffffff; /* 설명 텍스트 색상 */
+    margin-bottom: 20px; /* 하단 여백 */
+    line-height: 18px; /* 줄 간격 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    margin-left: auto; /* 좌측 여백 자동 설정 */
+    margin-right: auto; /* 우측 여백 자동 설정 */
+  }
+
+  /* 이벤트 강조 텍스트 */
+  .promo-highlight {
+    color: #ffd43c; /* 강조된 텍스트 색상 */
+    font-weight: 700;
+  }
+  form {
+    display: flex;
+    justify-content: center; /* 수평 정렬 */
+    align-items: center; /* 수직 정렬 */
+    gap: 10px; /* 입력 필드와 버튼 사이 간격 */
+  }
+
+  /* 이메일 입력란 스타일 */
+  .email-input {
+    margin-left: 4px;
+    width: 200px;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+    background: #1c1c1c; /* 입력 필드 배경색 */
+    border: 1px solid #333333; /* 테두리 색상 */
+    color: #9f9f9f; /* 텍스트 색상 */
+    outline: none;
+    padding: 0;
+    padding-left: 10px;
+  }
+
+  /* 이메일 입력란 버튼 스타일 */
+  .continue-button {
+    width: 87px;
+    height: 48px;
+    background: #333333; /* 배경색 */
+    border: none;
+    border-radius: 5px;
+    color: #a4a4a4; /* 텍스트 색상 */
+    font-weight: 700;
+    cursor: pointer; /* 커서 모양 변경 */
+  }
+
+  /* 약관 텍스트 스타일 */
+  .terms-text {
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 16px;
+    color: #9f9f9f;
+    margin-top: 15px; /* 상단 여백 */
+    padding: 10px;
+    text-align: center; /* 텍스트 중앙 정렬 */
+    margin-left: auto; /* 좌측 여백 자동 설정 */
+    margin-right: auto; /* 우측 여백 자동 설정 */
+  }
+
+  /* 약관 링크 스타일 */
+  .terms-link,
+  .privacy-link {
+    color: #ffffff;
+    text-decoration: underline; /* 밑줄 추가 */
+  }
+  .instaImage {
+    width: 327px;
+    height: 325px;
+  }
+  .insta-image {
+    width: 327px;
+    height: 325px;
+    margin: 0 auto; /* 이미지 중앙 정렬 */
+  }
+
+  .bridge-image {
+    width: 375px;
+    height: 140px;
+  }
 }
