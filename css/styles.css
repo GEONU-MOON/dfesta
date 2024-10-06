@@ -546,7 +546,10 @@ footer {
   header {
     width: 375px; /* 헤더 너비 */
     height: 60px; /* 헤더 높이 */
-    top: 30px; /* 헤더의 top 위치 */
+  }
+
+  body {
+    padding-top: 60px; /* 여백 크기: 120px */
   }
 
   /* 로고 이미지 스타일 수정 */
@@ -773,5 +776,18 @@ footer {
   .bridge-image {
     width: 375px;
     height: 140px;
+  }
+
+  .second-section-title {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  .section-desc {
+    font-size: 15px;
+    margin-bottom: 20px; /* 하단 여백 */
+    color: #c3c3c3; /* 텍스트 색상 */
+    line-height: 25px;
   }
 }
