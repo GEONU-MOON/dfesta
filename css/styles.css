@@ -964,4 +964,10 @@ footer {
     bottom: 20px; /* 하단에서의 거리 */
     display: none; /* 초기에는 숨김 */
   }
+
+  .slider img {
+    width: calc(100% - 20px); /* 모바일에서는 하나씩 */
+    aspect-ratio: 1 / 1;
+    margin: 0 10px;
+  }
 }
