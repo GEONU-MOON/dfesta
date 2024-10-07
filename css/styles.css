@@ -156,7 +156,7 @@ body {
 
 /* 배너 하단 버튼 스타일 */
 .showtimes-button {
-  background-color: #2400ff; /* 배경색: 파란색 */
+  background-color: rgba(97, 57, 255, 1);
   border: none;
   border-radius: 6px;
   color: white;
