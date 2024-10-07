@@ -622,10 +622,10 @@ footer {
 }
 
 /* ===========================
-   반응형 스타일 (max-width: 768px)
+   반응형 스타일 (max-width: 480px)
 ============================== */
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   section {
     margin-bottom: 50px; /* 하단 여백 */
   }
@@ -998,5 +998,173 @@ footer {
     width: calc(100% - 20px); /* 모바일에서는 하나씩 */
     aspect-ratio: 1 / 1;
     margin: 0 10px;
+  }
+}
+
+/* Galaxy Fold 펼쳐졌을 때 (두 배 크기 적용) */
+/* Galaxy Fold 펼쳐졌을 때 반응형 스타일링 */
+@media (min-width: 1536px) {
+  /* 전체 컨테이너 정렬 */
+  body,
+  html {
+    display: flex; /* 플렉스 박스로 전체 화면 정렬 */
+    justify-content: center; /* 컨텐츠를 중앙 정렬 */
+    align-items: flex-start; /* 세로 정렬 시 상단 배치 */
+  }
+
+  /* 헤더 스타일 */
+  header {
+    height: 80px;
+    padding: 0 40px;
+  }
+
+  /* 로고 스타일 */
+  .logo {
+    width: 400px;
+    height: 50px;
+  }
+
+  /* 프로필 아이콘 조정 */
+  .people {
+    width: 48px;
+    height: 48px;
+    top: 24px; /* 세로 위치 조정 */
+    right: 60px; /* 우측으로 이동 */
+  }
+
+  /* 인트로 섹션 스타일 */
+  .intro-image1-wrapper {
+    background-size: cover; /* 배경 이미지를 화면에 맞춤 */
+  }
+
+  .intro-image1,
+  .intro-image2 {
+    width: 1200px; /* 이미지의 너비를 확대 */
+  }
+
+  /* 배너 섹션 */
+  .banner-title {
+    font-size: 48px;
+    max-width: 900px; /* 배너 텍스트의 너비 조정 */
+    margin: 0 auto; /* 중앙 정렬 */
+  }
+
+  .banner-sub {
+    font-size: 24px;
+    line-height: 36px;
+    max-width: 800px; /* 텍스트 너비 확장 */
+    margin: 20px auto; /* 텍스트 중앙 정렬 */
+  }
+
+  .showtimes-button {
+    width: 400px; /* 버튼 크기 조정 */
+    height: 80px;
+    font-size: 24px;
+    padding: 20px 40px;
+    margin: 30px auto; /* 버튼 중앙 정렬 */
+  }
+
+  /* 메인 및 서브 컨텐츠 섹션 */
+  .main-wrapper,
+  .secondary-wrapper {
+    width: 1200px; /* 너비 확장 */
+    margin: 0 auto;
+  }
+
+  /* 위치 섹션 조정 */
+  .location-desc {
+    display: flex;
+    flex-direction: row; /* 가로 정렬 */
+    align-items: center;
+    gap: 40px;
+  }
+
+  .location-desc1 {
+    font-size: 36px;
+  }
+
+  .location-desc2 {
+    margin-top: 0; /* 상단 여백 제거 */
+    font-size: 18px;
+  }
+
+  /* 이벤트 섹션 */
+  .event-heading {
+    font-size: 36px;
+    line-height: 44px;
+    padding-top: 20px;
+  }
+
+  .event-description {
+    font-size: 20px;
+    max-width: 1000px;
+    margin: 20px auto; /* 중앙 정렬 */
+  }
+
+  /* 이메일 입력 폼 스타일 */
+  form {
+    gap: 20px; /* 입력 필드와 버튼 간 간격 */
+  }
+
+  .email-input {
+    width: 500px; /* 폼 너비 조정 */
+    height: 60px;
+    font-size: 18px;
+    padding-left: 16px; /* 내부 패딩 조정 */
+  }
+
+  .continue-button {
+    width: 150px;
+    height: 60px;
+    font-size: 18px;
+  }
+
+  /* 인스타 이미지 및 브릿지 이미지 스타일 */
+  .insta-image {
+    width: 580px;
+    height: 580px;
+  }
+
+  .bridge-image {
+    width: 1000px; /* 브릿지 이미지 너비 확장 */
+    height: 280px;
+  }
+
+  /* 푸터 */
+  footer {
+    padding: 50px 10px;
+    text-align: center;
+  }
+
+  .footer-layout {
+    display: flex;
+    justify-content: space-between; /* 좌우 요소 배치 */
+    align-items: center;
+    flex-wrap: wrap; /* 행이 넘칠 경우 감싸기 */
+  }
+
+  .footer-left {
+    width: 500px;
+    height: auto; /* 높이 자동 */
+  }
+
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .floating-button {
+    bottom: 60px;
+    right: 60px;
+    width: 60px;
+    height: 60px;
+    font-size: 18px;
+  }
+
+  /* 슬라이더 이미지 스타일 */
+  .slider img {
+    width: 400px; /* 슬라이더 이미지의 크기 조정 */
+    margin: 0 20px;
   }
 }
