@@ -493,32 +493,48 @@ form {
 ============================== */
 footer {
   background: #1c1c1c; /* 배경색: 진한 검정 */
-  padding: 40px 200px; /* 상하 패딩: 40px, 좌우 패딩: 200px */
+  padding: 80px 10px; /* 상하 패딩: 40px, 좌우 패딩: 200px */
   color: #aaa; /* 텍스트 색상 */
 }
 
-/* 푸터 상단 영역 */
-.footer-top {
-  display: flex;
-  justify-content: space-between; /* 좌우 정렬 */
-  align-items: center;
-  margin-bottom: 20px;
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* 푸터 하단 텍스트 스타일 */
-.footer-bottom {
-  font-size: 24px;
+/* 새로운 레이아웃 컨테이너 스타일 */
+.footer-layout {
+  display: flex; /* 수평 정렬 */
+  justify-content: space-between; /* 요소 간격 */
+  align-items: center; /* 요소 세로 중앙 정렬 */
+}
+
+.footer-left {
+  display: flex; /* 로고와 텍스트를 나란히 배치 */
+  flex-direction: column; /* 로고와 텍스트를 위아래로 배치 */
+  gap: 10px; /* 로고와 텍스트 사이 간격 */
+  width: 700px;
+  height: 89px;
+  font-weight: 500;
 }
 
 /* 푸터 로고 스타일 */
 .footer-logo {
+  width: 180px;
   height: 48px;
+}
+
+/* 푸터 하단 텍스트 스타일 */
+.footer-bottom {
+  font-size: 24px; /* 텍스트 크기 */
+  text-align: left;
+  color: #777777;
 }
 
 /* 소셜 아이콘 스타일 */
 .social-icons {
   display: flex;
-  gap: 40px; /* 아이콘 간 간격 */
+  gap: 20px; /* 아이콘 간 간격 */
 }
 
 .social-icons a {
@@ -544,12 +560,12 @@ footer {
   }
   /* 헤더 스타일 수정 */
   header {
-    width: 375px; /* 헤더 너비 */
+    width: 100%; /* 헤더 너비 */
     height: 60px; /* 헤더 높이 */
   }
 
   body {
-    padding-top: 60px; /* 여백 크기: 120px */
+    padding-top: 80px;
   }
 
   /* 로고 이미지 스타일 수정 */
@@ -846,38 +862,42 @@ footer {
   }
 
   footer {
-    padding: 40px 20px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%; /* 전체 너비 */
   }
 
-  .footer-top {
-    flex-direction: column;
-    justify-content: center;
+  .footer-layout {
+    flex-direction: column; /* 모바일에서는 세로 정렬 */
     align-items: center;
-    gap: 20px;
-    margin-bottom: 0;
   }
 
   .footer-logo {
-    height: 40px;
-    margin-bottom: 15px;
+    width: 121px;
+    height: 33px;
+  }
+
+  .footer-left {
+    align-items: center; /* 모바일에서 로고와 텍스트 가운데 정렬 */
+    width: 100%;
   }
 
   .footer-bottom {
-    order: 1;
-    text-align: center;
-    margin-top: 10px;
+    text-align: center; /* 텍스트 중앙 정렬 */
+    font-size: 12px;
   }
 
   .social-icons {
     flex-direction: row;
     gap: 15px;
-    margin-top: 10px;
   }
 
   .social-icons a {
-    width: 30px;
-    height: 30px;
-    font-size: 18px;
+    width: 48px;
+    height: 48px;
+    font-size: 21px;
     border: 2px solid #aaa;
   }
 }
