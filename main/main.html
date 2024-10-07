@@ -306,6 +306,35 @@
       </div>
     </footer>
 
+    <!-- 플로팅 버튼: 이메일 아이콘 -->
+    <button class="floating-button email-button">
+      <i class="fas fa-envelope"></i>
+    </button>
+
+    <!-- 플로팅 버튼: 스크롤 업 아이콘 -->
+    <button class="floating-button scroll-up-button">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
     <script src="../js/main.js"></script>
+    <script>
+      // 스크롤 업 버튼 클릭 시 페이지 상단으로 부드럽게 스크롤 이동
+      document
+        .querySelector(".scroll-up-button")
+        .addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+      // 스크롤 이벤트를 통해 스크롤 업 버튼 표시/숨기기
+      window.onscroll = function () {
+        const scrollUpButton = document.querySelector(".scroll-up-button");
+        if (window.scrollY > 200) {
+          // 스크롤이 200px 이상 내려가면 표시
+          scrollUpButton.style.display = "flex";
+        } else {
+          scrollUpButton.style.display = "none";
+        }
+      };
+    </script>
   </body>
 </html>
