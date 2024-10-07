@@ -116,33 +116,34 @@ function slide(section, direction) {
   const slider = sliders[section];
   const totalImages = images[section].length;
 
-  // 모바일 환경 체크 및 groupSize 동적 설정
-  const groupSize = window.innerWidth <= 768 ? 1 : 3; // 모바일에서는 1개씩, 기본은 3개씩
+  const groupSize = window.innerWidth <= 768 ? 1 : 3;
   const totalGroups = Math.ceil(totalImages / groupSize);
 
   currentIndex[section] += direction * groupSize;
 
-  // 슬라이더의 이동 범위 제한
   if (currentIndex[section] < 0) {
-    currentIndex[section] = (totalGroups - 1) * groupSize; // 마지막 그룹으로 이동
+    currentIndex[section] = (totalGroups - 1) * groupSize;
   } else if (currentIndex[section] >= totalImages) {
-    currentIndex[section] = 0; // 첫 번째 그룹으로 이동
+    currentIndex[section] = 0;
   }
 
-  // 슬라이더 이동 거리 계산
   const offset = -(currentIndex[section] / groupSize) * 100;
   slider.style.transform = `translateX(${offset}%)`;
+
+  const pageIndicator = document.getElementById(`${section}-page-indicator`);
+  const currentPage = Math.ceil(currentIndex[section] / groupSize) + 1;
+  pageIndicator.textContent = `${currentPage} | ${totalGroups}`;
 }
 
-// 초기 로드 시 및 화면 크기 변경 시 슬라이더 이미지 너비 조정
-function adjustSliderForDevice() {
-  const slidersList = document.querySelectorAll(".slider img");
-  const isMobile = window.innerWidth <= 768;
-  slidersList.forEach((img) => {
-    img.style.width = isMobile ? "calc(100% - 20px)" : "calc(100% / 3 - 20px)";
+// 초기 로드 및 화면 크기 변경 시 슬라이더 조정
+window.addEventListener("resize", () => adjustPageIndicators());
+window.addEventListener("load", () => adjustPageIndicators());
+
+function adjustPageIndicators() {
+  Object.keys(sliders).forEach((key) => {
+    const pageIndicator = document.getElementById(`${key}-page-indicator`);
+    const groupSize = window.innerWidth <= 768 ? 1 : 3;
+    const totalPages = Math.ceil(images[key].length / groupSize);
+    pageIndicator.textContent = `1 | ${totalPages}`;
   });
 }
-
-// 초기 로드 및 리사이즈 시 슬라이더 조정
-window.addEventListener("resize", adjustSliderForDevice);
-window.addEventListener("load", adjustSliderForDevice);

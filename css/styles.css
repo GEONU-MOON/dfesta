@@ -291,6 +291,35 @@ section {
   position: static; /* 버튼 위치를 슬라이더 내부에 고정 */
 }
 
+.page-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff; /* 기본 텍스트 색상: 흰색 */
+  font-size: 16px;
+  font-weight: 700;
+  gap: 10px; /* 요소 간 간격 */
+}
+
+/* 현재 페이지 번호 스타일 */
+.page-indicator .current-page {
+  color: #ffffff !important; /* 현재 페이지 색상: 흰색 */
+  font-weight: 900; /* 굵은 텍스트 */
+}
+
+/* 전체 페이지 번호 스타일 */
+.page-indicator .total-pages {
+  color: rgba(255, 255, 255, 0.5); /* 연한 흰색 */
+  font-weight: 400; /* 일반 텍스트 굵기 */
+}
+
+/* 페이지 구분자 스타일 */
+.page-indicator .separator {
+  color: #ffffff !important; /* 구분자 색상: 흰색 */
+  font-size: 18px;
+  margin: 0 8px;
+}
+
 /* ===========================
    Event Section Styles (이벤트 섹션)
 ============================== */
