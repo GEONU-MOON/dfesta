@@ -1003,7 +1003,7 @@ footer {
 
 /* Galaxy Fold 펼쳐졌을 때 (두 배 크기 적용) */
 /* Galaxy Fold 펼쳐졌을 때 반응형 스타일링 */
-@media (min-width: 1536px) {
+@media (min-width: 481px) and (max-width: 15360px) {
   /* 전체 컨테이너 정렬 */
   body,
   html {
