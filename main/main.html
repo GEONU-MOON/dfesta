@@ -393,6 +393,38 @@
           scrollUpButton.style.display = "none";
         }
       };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // 스크롤 업 버튼 클릭 시 페이지 상단으로 부드럽게 스크롤 이동
+        document
+          .querySelector(".scroll-up-button")
+          .addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+
+        // 이메일 버튼 클릭 시 이벤트 섹션으로 스크롤 이동
+        document
+          .querySelector(".email-button")
+          .addEventListener("click", () => {
+            const eventSection = document.getElementById("event");
+            if (eventSection) {
+              eventSection.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+              });
+            }
+          });
+
+        // 스크롤 이벤트를 통해 스크롤 업 버튼 표시/숨기기
+        window.onscroll = function () {
+          const scrollUpButton = document.querySelector(".scroll-up-button");
+          if (window.scrollY > 200) {
+            scrollUpButton.style.display = "flex";
+          } else {
+            scrollUpButton.style.display = "none";
+          }
+        };
+      });
     </script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
