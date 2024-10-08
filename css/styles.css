@@ -1434,3 +1434,11 @@ footer {
     margin: 0 10px;
   }
 }
+
+@media (max-width: 350px) {
+  .people {
+    left: 1px;
+    margin-left: 300px;
+    padding: 3px 4px; /* padding 설정 */
+  }
+}
