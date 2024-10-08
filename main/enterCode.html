@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D'Festa - Login Page</title>
+    <link rel="stylesheet" href="../css/enterCode.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-content">
+        <img src="../images/title.png" alt="DFESTA Logo" class="logo" />
+        <div class="header-buttons">
+          <button class="buy-tickets">Buy Tickets</button>
+          <div class="user-icon">
+            <img src="../images/people.png" alt="User Icon" class="people" />
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main-content login-page">
+      <div class="welcome-container">
+        <div class="welcome-text">Enter Code</div>
+        <div class="sub-text">
+          A one-time code was sent to ABCD@gmail.co.kr This code expires in 5
+          minutes.
+        </div>
+      </div>
+      <form class="verify-form">
+        <div class="code-container">
+          <input type="text" class="code-input" maxlength="1" />
+          <input type="text" class="code-input" maxlength="1" />
+          <input type="text" class="code-input" maxlength="1" />
+          <input type="text" class="code-input" maxlength="1" />
+          <input type="text" class="code-input" maxlength="1" />
+        </div>
+        <button type="submit" class="verify-button">Verify</button>
+        <div class="resend-options">
+          <div>
+            Didn't receive a code? <a href="#" class="resend-link">Resend</a>
+          </div>
+          <div>
+            Enter the wrong email?
+            <a href="#" class="try-again-link">Try again</a>
+          </div>
+        </div>
+      </form>
+    </main>
+
+    <!-- <footer>
+      <div class="footer-container">
+        <div class="footer-layout">
+          <div class="footer-left">
+            <img
+              src="../images/footer-logo.png"
+              alt="DFESTA Logo"
+              class="footer-logo"
+            />
+            <div class="footer-bottom">
+              <div>Copyright © 2024 DFESTA. All rights reserved.</div>
+            </div>
+          </div>
+          <div class="social-icons">
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="#" target="_blank"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer> -->
+
+    <!-- 플로팅 버튼: 이메일 아이콘 -->
+    <!-- <button class="floating-button email-button">
+      <i class="fas fa-envelope"></i>
+    </button> -->
+
+    <!-- 플로팅 버튼: 스크롤 업 아이콘 -->
+    <!-- <button class="floating-button scroll-up-button">
+      <i class="fas fa-arrow-up"></i>
+    </button> -->
+
+    <!-- <script>
+      // 스크롤 업 버튼 클릭 시 페이지 상단으로 부드럽게 스크롤 이동
+      document
+        .querySelector(".scroll-up-button")
+        .addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+      // 스크롤 이벤트를 통해 스크롤 업 버튼 표시/숨기기
+      window.onscroll = function () {
+        const scrollUpButton = document.querySelector(".scroll-up-button");
+        if (window.scrollY > 200) {
+          // 스크롤이 200px 이상 내려가면 표시
+          scrollUpButton.style.display = "flex";
+        } else {
+          scrollUpButton.style.display = "none";
+        }
+      };
+    </script> -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const codeInputs = document.querySelectorAll(".code-input");
+        const verifyButton = document.querySelector(".verify-button");
+
+        // 코드 입력 필드에 입력 이벤트 리스너 추가
+        codeInputs.forEach((input, index) => {
+          input.addEventListener("input", () => {
+            // 다음 필드로 자동 포커스 이동
+            if (input.value.length === 1 && index < codeInputs.length - 1) {
+              codeInputs[index + 1].focus();
+            }
+
+            // 모두 입력되었는지 확인하는 함수
+            const allFilled = Array.from(codeInputs).every(
+              (input) => input.value.trim() !== ""
+            );
+
+            if (allFilled) {
+              // 모든 필드가 채워졌을 때 버튼 활성화
+              verifyButton.style.backgroundColor = "rgba(97, 57, 255, 1)";
+              verifyButton.style.color = "white"; // 텍스트 색상 변경
+            } else {
+              // 필드가 비었을 때 기본 스타일로 복구
+              verifyButton.style.backgroundColor = "#333333";
+              verifyButton.style.color = "#a4a4a4"; // 텍스트 색상 복구
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

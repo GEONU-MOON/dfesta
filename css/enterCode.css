@@ -1,0 +1,231 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif; /* 폰트 패밀리 설정 */
+  background-color: #000000; /* 전체 배경색: 검정 */
+  overflow-x: hidden;
+  color: #fff; /* 기본 텍스트 색상: 흰색 */
+}
+
+/* ===========================
+   Header Styles (헤더 스타일)
+============================== */
+/* 고정된 상단 헤더 스타일 */
+header {
+  color: white;
+  position: fixed; /* 상단 고정 */
+  top: 0; /* 페이지 최상단에 위치 */
+  left: 0;
+  width: 100%; /* 전체 너비 사용 */
+  height: 100px;
+  z-index: 1000; /* 다른 요소보다 위에 위치 */
+  background: rgba(0, 0, 0, 0.8); /* 80% 투명도의 검정 배경 */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* 아래쪽 그림자 */
+}
+
+/* 헤더 내 컨텐츠 정렬 */
+.header-content {
+  display: flex;
+  justify-content: space-between; /* 로고와 버튼 사이의 간격 분리 */
+  align-items: center; /* 수직 중앙 정렬 */
+  padding: 28px 120px; /* 상하 패딩: 28px, 좌우 패딩: 120px */
+}
+
+/* 로고 이미지 스타일 */
+.logo {
+  width: 600px;
+  height: 50px;
+}
+
+/* 헤더 내 버튼과 아이콘 스타일 */
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* 버튼과 아이콘 사이 간격 */
+}
+
+/* 'Buy Tickets' 버튼 스타일 */
+.buy-tickets {
+  background: linear-gradient(
+    90deg,
+    #013fff,
+    #8645e6
+  ); /* 파랑-보라 그라데이션 */
+  border: none;
+  border-radius: 25px; /* 둥근 모서리 */
+  padding: 10px 25px; /* 패딩: 상하 10px, 좌우 25px */
+  color: #ffffff; /* 텍스트 색상: 흰색으로 변경 */
+  cursor: pointer; /* 커서 모양 변경 */
+  font-weight: bold;
+  transition: background 0.3s ease-in-out; /* 배경색 전환 애니메이션 */
+}
+
+/* 프로필 아이콘 스타일 */
+.people {
+  width: 35.2px; /* 너비 설정 */
+  height: 35.6px; /* 높이 설정 */
+}
+
+.main-content.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 137.88px;
+  overflow: hidden; /* 불필요한 스크롤 방지 */
+}
+
+.login-form {
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 검정 배경 */
+  border-radius: 10px;
+  width: 388px;
+  max-width: 100%;
+}
+
+.welcome-container {
+  margin-bottom: 20px; /* 기존 상단 여백 */
+  background: url("../images/login.png") center/cover no-repeat; /* 배경 이미지 경로 설정 */
+  padding-left: 40px; /* 좌측 패딩 */
+  padding-right: 40px; /* 우측 패딩 */
+  padding-bottom: 40px; /* 하단 패딩 */
+  background-size: 1920px 293px; /* 이미지의 정확한 크기 설정 */
+  width: 1920px; /* 컨테이너 너비 설정 */
+  height: 293px; /* 컨테이너 높이 설정 */
+  max-width: 100%; /* 반응형을 위해 최대 너비 설정 */
+  display: flex; /* Flexbox 설정 */
+  flex-direction: column; /* 세로 방향 정렬 */
+  justify-content: center; /* 수직 중앙 정렬 */
+  align-items: center; /* 수평 중앙 정렬 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+.welcome-text {
+  font-size: 40px; /* 텍스트 크기 약간 축소 */
+  font-weight: 800;
+  color: #ffffff;
+  text-align: center;
+  margin: 0; /* 텍스트 상하 마진 제거 */
+}
+
+.sub-text {
+  font-size: 24px; /* 텍스트 크기 약간 축소 */
+  font-weight: 500;
+  text-align: center;
+  color: #e5e5e5; /* 연한 텍스트 색상 */
+  margin: 10px 0 20px; /* 상하 마진 조정 */
+}
+
+.login-form label {
+  font-size: 20px; /* 텍스트 크기 축소 */
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px; /* 하단 여백 추가 */
+}
+
+.input-container input {
+  flex: 1;
+  padding: 0 15px; /* 패딩 설정 */
+  border: 1px solid #7e7e7e; /* 테두리 색상 */
+  border-radius: 5px;
+  background-color: black; /* 배경색 설정 */
+  color: #7e7e7e; /* 텍스트 색상 설정 */
+  margin-right: 10px;
+  height: 60px;
+}
+
+.continue-button {
+  background-color: #333333;
+  width: 100%;
+  color: #a4a4a4;
+  border: none;
+  padding: 12px 20px; /* 패딩 축소 */
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  height: 60px;
+  transition: background 0.3s ease;
+  margin-top: 40px;
+}
+
+.terms {
+  margin-top: 10px; /* 상단 마진 축소 */
+  font-size: 15px; /* 폰트 크기 축소 */
+  color: #aaa;
+  text-align: center;
+  height: 41px;
+}
+
+.terms a {
+  color: #aaa;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+/* 이메일 인증 폼 스타일 */
+.verify-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 20px 30px;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 검정 배경 */
+  border-radius: 10px;
+  width: 388px;
+  max-width: 100%;
+}
+
+/* 코드 입력 상자 스타일 */
+.code-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.code-input {
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  font-size: 24px;
+  border: 1px solid #7e7e7e;
+  border-radius: 8px;
+  background-color: #000;
+  color: #ffffff;
+}
+
+.verify-button {
+  background-color: #333333;
+  color: #a4a4a4;
+  border: none;
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  height: 60px;
+  transition: background 0.3s ease;
+  margin-bottom: 20px;
+}
+
+/* 재전송 및 재시도 옵션 스타일 */
+.resend-options {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.resend-link,
+.try-again-link {
+  color: #6c5ce7;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
