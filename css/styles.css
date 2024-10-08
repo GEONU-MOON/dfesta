@@ -1037,6 +1037,7 @@ footer {
     top: 18px; /* 아이콘의 top 위치 */
     left: 327px; /* 아이콘의 left 위치 */
     padding: 3px 4px; /* padding 설정 */
+    margin-left: 0;
   }
   .intro-image1-wrapper {
     background-size: 100% 196px; /* 배경 이미지 크기 */
