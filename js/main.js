@@ -101,31 +101,87 @@ const images = {
   ],
 };
 
-// 각 슬라이더에 이미지 동적 생성
+// 슬라이더 초기화
 Object.keys(sliders).forEach((key) => {
-  images[key].forEach((src) => {
+  const slider = sliders[key];
+  const imageList = images[key];
+  const groupSize = getGroupSize();
+
+  if (groupSize === 1) {
+    initializeInfiniteSlider(slider, imageList, key);
+  } else {
+    initializeRegularSlider(slider, imageList, key);
+  }
+
+  updatePageIndicator(key);
+
+  // 반응형 슬라이더 재설정
+  slider.addEventListener("scroll", () => {
+    debounce(() => updatePageIndicator(key), 100);
+  });
+});
+
+// 무한 모드 슬라이더 초기화 함수
+function initializeInfiniteSlider(slider, imageList, key) {
+  const lastImage = document.createElement("img");
+  lastImage.src = imageList[imageList.length - 1];
+  lastImage.className = "scroll-item clone";
+  lastImage.alt = `Clone of Last Image for ${key}`;
+  slider.appendChild(lastImage);
+
+  imageList.forEach((src) => {
     const img = document.createElement("img");
     img.src = src;
     img.className = "scroll-item";
     img.alt = `Slide Image for ${key}`;
-    sliders[key].appendChild(img);
+    slider.appendChild(img);
   });
 
-  // 페이지 인디케이터 초기화
-  updatePageIndicator(key);
+  const firstImage = document.createElement("img");
+  firstImage.src = imageList[0];
+  firstImage.className = "scroll-item clone";
+  firstImage.alt = `Clone of First Image for ${key}`;
+  slider.appendChild(firstImage);
 
-  // 슬라이더의 스크롤 이벤트 리스너 추가
-  sliders[key].addEventListener("scroll", () => {
-    updatePageIndicator(key);
+  setTimeout(() => {
+    slider.scrollLeft = slider.querySelector(".scroll-item").clientWidth;
+  }, 0);
+
+  slider.addEventListener("scroll", () => handleInfiniteScroll(slider));
+}
+
+// 일반 모드 슬라이더 초기화 함수
+function initializeRegularSlider(slider, imageList, key) {
+  imageList.forEach((src) => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.className = "scroll-item";
+    img.alt = `Slide Image for ${key}`;
+    slider.appendChild(img);
   });
-});
+}
+
+// 무한 스크롤 핸들링 함수
+function handleInfiniteScroll(slider) {
+  const scrollItems = slider.querySelectorAll(".scroll-item");
+  const firstItemWidth = scrollItems[0].clientWidth;
+  const totalScrollWidth = firstItemWidth * scrollItems.length;
+
+  if (slider.scrollLeft <= 0) {
+    slider.scrollLeft = totalScrollWidth - 2 * firstItemWidth;
+  }
+
+  if (slider.scrollLeft >= totalScrollWidth - firstItemWidth) {
+    slider.scrollLeft = firstItemWidth;
+  }
+}
 
 // 반응형을 위한 그룹 크기 설정 함수
 function getGroupSize() {
   const width = window.innerWidth;
-  if (width <= 480) return 1; // 모바일: 이미지 1개씩
-  if (width <= 800) return 1; // 갤럭시 폴드: 이미지 1개씩
-  return 3; // 웹: 이미지 3개씩
+  if (width <= 480) return 1;
+  if (width <= 800) return 1;
+  return 3;
 }
 
 // 슬라이드 이동 함수
@@ -133,26 +189,29 @@ function slide(section, direction) {
   const slider = sliders[section];
   if (!slider.querySelector("img")) return;
 
-  const imageWidth = slider.querySelector(".scroll-item").clientWidth + 20; // 이미지 너비 + 마진
-  const groupSize = getGroupSize(); // 그룹당 보여줄 이미지 수
-  const currentPage = Math.round(slider.scrollLeft / (imageWidth * groupSize)); // 현재 페이지
+  const imageWidth = slider.querySelector(".scroll-item").clientWidth;
+  const groupSize = getGroupSize();
+  const scrollOffset = imageWidth * groupSize;
+  const isInfinite = groupSize === 1;
 
-  // 전체 페이지 수
-  const totalPages = Math.ceil(images[section].length / groupSize);
-  let newPage = currentPage + direction;
+  const maxScrollLeft = isInfinite
+    ? imageWidth * (slider.querySelectorAll(".scroll-item").length - 2)
+    : imageWidth * (slider.querySelectorAll(".scroll-item").length - groupSize);
 
-  if (newPage >= totalPages) {
-    newPage = 0; // 첫 페이지로 이동
-  } else if (newPage < 0) {
-    newPage = totalPages - 1; // 마지막 페이지로 이동
+  let newScrollLeft = slider.scrollLeft + direction * scrollOffset;
+
+  if (isInfinite) {
+    if (newScrollLeft >= maxScrollLeft) newScrollLeft = imageWidth;
+    else if (newScrollLeft <= 0) newScrollLeft = maxScrollLeft - imageWidth;
+  } else {
+    if (newScrollLeft > maxScrollLeft) newScrollLeft = maxScrollLeft;
+    else if (newScrollLeft < 0) newScrollLeft = 0;
   }
 
-  slider.scrollTo({
-    left: newPage * imageWidth * groupSize,
-    behavior: "smooth",
-  });
+  slider.scrollTo({ left: newScrollLeft, behavior: "smooth" });
 
-  updatePageIndicator(section); // 페이지 인디케이터 즉시 업데이트
+  // 슬라이드 이동이 끝난 후 인디케이터 업데이트
+  setTimeout(() => updatePageIndicator(section), 300);
 }
 
 // 페이지 인디케이터 업데이트 함수
@@ -160,21 +219,31 @@ function updatePageIndicator(section) {
   const slider = sliders[section];
   if (!slider.querySelector("img")) return;
 
-  const imageWidth = slider.querySelector(".scroll-item").clientWidth + 20; // 이미지 너비 + 마진
+  const imageWidth = slider.querySelector(".scroll-item").clientWidth;
   const totalImages = images[section].length;
-
-  // 한 페이지에 표시할 슬라이드 수
   const groupSize = getGroupSize();
   const totalGroups = Math.ceil(totalImages / groupSize);
 
-  // 현재 페이지 계산
-  const currentPage =
-    Math.round(slider.scrollLeft / (imageWidth * groupSize)) + 1;
+  // 스크롤 위치에 따른 현재 페이지 계산
+  let currentPage = Math.round(slider.scrollLeft / (imageWidth * groupSize));
+  currentPage = currentPage + 1; // 1부터 시작하도록 보정
 
-  // 페이지 인디케이터 업데이트
+  if (currentPage > totalGroups) currentPage = totalGroups;
+
   const pageIndicator = document.getElementById(`${section}-page-indicator`);
-  pageIndicator.querySelector(".current-page").textContent = `${currentPage}`;
-  pageIndicator.querySelector(".total-pages").textContent = `${totalGroups}`;
+  if (pageIndicator) {
+    pageIndicator.querySelector(".current-page").textContent = `${currentPage}`;
+    pageIndicator.querySelector(".total-pages").textContent = `${totalGroups}`;
+  }
+}
+
+// 디바운스 함수
+function debounce(func, wait) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
 }
 
 // 초기 로드 및 화면 크기 변경 시 페이지 인디케이터 설정
@@ -182,7 +251,5 @@ window.addEventListener("resize", () => adjustPageIndicators());
 window.addEventListener("load", () => adjustPageIndicators());
 
 function adjustPageIndicators() {
-  Object.keys(sliders).forEach((key) => {
-    updatePageIndicator(key);
-  });
+  Object.keys(sliders).forEach((key) => updatePageIndicator(key));
 }
