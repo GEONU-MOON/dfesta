@@ -76,7 +76,7 @@ header {
   overflow: hidden; /* 불필요한 스크롤 방지 */
 }
 
-.login-form {
+.verify-form {
   background-color: rgba(0, 0, 0, 0.5); /* 반투명 검정 배경 */
   border-radius: 10px;
   width: 388px;
@@ -116,12 +116,21 @@ header {
   margin: 10px 0 20px; /* 상하 마진 조정 */
 }
 
-.login-form label {
-  font-size: 20px; /* 텍스트 크기 축소 */
-  color: #ffffff;
-  font-weight: 600;
-  margin-bottom: 10px;
-  display: block;
+/* 새롭게 추가한 라벨 컨테이너 스타일 */
+.code-label-container {
+  display: flex;
+  justify-content: flex-start; /* 왼쪽 정렬 */
+  width: 100%; /* 전체 너비 사용 */
+  margin-bottom: 10px; /* 컨테이너 하단 여백 */
+}
+
+/* 라벨 스타일 조정 */
+.verify-form label {
+  font-size: 20px; /* 텍스트 크기 설정 */
+  color: #ffffff; /* 텍스트 색상 */
+  font-weight: 600; /* 글자 굵기 */
+  text-align: left; /* 왼쪽 정렬 */
+  margin: 0; /* 여백 제거 */
 }
 
 .input-container {
@@ -228,4 +237,112 @@ header {
   color: #6c5ce7;
   text-decoration: none;
   transition: color 0.3s ease;
+}
+
+@media (max-width: 800px) {
+  section {
+    margin-bottom: 50px; /* 하단 여백 */
+  }
+
+  /* 헤더 스타일 수정 */
+  header {
+    width: 100%; /* 헤더 너비 */
+    height: 60px; /* 헤더 높이 */
+  }
+
+  body {
+    padding-top: 60px; /* 헤더 높이에 맞춘 패딩 */
+  }
+
+  /* 로고 이미지 스타일 수정 */
+  .logo {
+    width: 267px; /* 로고 너비 */
+    height: 33px; /* 로고 높이 */
+    position: absolute; /* 위치 속성 절대값 */
+    top: 14px; /* 로고의 top 위치 */
+    left: 24px; /* 로고의 left 위치 */
+  }
+
+  /* 헤더 버튼 컨테이너 스타일 수정 */
+  .header-buttons {
+    display: flex; /* 플렉스 박스로 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    position: absolute; /* 절대 위치 설정 */
+    top: 14px; /* 헤더 상단 위치 */
+    right: 24px; /* 헤더 오른쪽으로 배치 */
+  }
+
+  /* 프로필 아이콘 스타일 수정 */
+  .people {
+    width: 24px; /* 아이콘 너비 */
+    height: 24px; /* 아이콘 높이 */
+    margin-left: 10px; /* 바이 티켓 버튼과 간격 조정 */
+    padding: 3px 4px; /* padding 설정 */
+  }
+
+  /* 'Buy Tickets' 버튼 스타일 */
+  .buy-tickets {
+    width: 90px;
+    height: 26px;
+    font-size: 13px;
+    border: none;
+    border-radius: 25px; /* 둥근 모서리 */
+    padding: 2px 5px; /* 패딩 설정 */
+    color: #ffffff; /* 텍스트 색상: 흰색 */
+    cursor: pointer; /* 커서 모양 변경 */
+    transition: background 0.3s ease-in-out; /* 배경색 전환 애니메이션 */
+  }
+
+  /* 메인 컨텐츠 (welcome-container 상단 여백 제거) */
+  .main-content.login-page {
+    margin-top: 0; /* 헤더와의 여백 제거 */
+  }
+
+  .welcome-container {
+    margin-top: 0; /* 상단 여백 제거 */
+    margin-bottom: 20px; /* 기존 상단 여백 */
+    background: url("../images/login.png") center/cover no-repeat; /* 배경 이미지 경로 설정 */
+    padding-left: 40px; /* 좌측 패딩 */
+    padding-right: 40px; /* 우측 패딩 */
+    padding-bottom: 40px; /* 하단 패딩 */
+    background-size: 1920px 293px; /* 이미지의 정확한 크기 설정 */
+    width: 1920px; /* 컨테이너 너비 설정 */
+    height: 293px; /* 컨테이너 높이 설정 */
+    max-width: 100%; /* 반응형을 위해 최대 너비 설정 */
+    display: flex; /* Flexbox 설정 */
+    flex-direction: column; /* 세로 방향 정렬 */
+    justify-content: center; /* 수직 중앙 정렬 */
+    align-items: center; /* 수평 중앙 정렬 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+  }
+
+  .welcome-text {
+    font-size: 32px;
+  }
+
+  .sub-text {
+    font-size: 18px; /* 텍스트 크기 약간 축소 */
+    font-weight: 500;
+    text-align: center;
+    color: #b8b8b8; /* 연한 텍스트 색상 */
+    margin: 10px 0 20px; /* 상하 마진 조정 */
+    width: 397px;
+  }
+
+  .verify-form {
+    width: 304px;
+    max-width: 100%;
+  }
+  .terms {
+    margin-top: 10px; /* 상단 마진 축소 */
+    font-size: 11px; /* 폰트 크기 축소 */
+    color: #aaa;
+    text-align: center;
+    height: 41px;
+  }
+
+  .code-input {
+    width: 48px;
+    height: 48px;
+  }
 }
