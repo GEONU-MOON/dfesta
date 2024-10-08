@@ -741,6 +741,21 @@ footer {
     border-image-slice: 1;
   }
 
+  .scroll-container {
+    display: flex;
+    overflow-x: hidden; /* 가로 스크롤 활성화 */
+    scroll-snap-type: x mandatory; /* 스크롤 시 각 슬라이드 맞춤 */
+    padding-left: 15vw; /* 왼쪽 패딩 */
+    padding-right: 15vw; /* 오른쪽 패딩 */
+  }
+
+  .scroll-item {
+    flex: 0 0 70%; /* 슬라이드 너비를 70%로 설정 */
+    margin: 0 15vw; /* 양 옆에 약간의 간격을 추가 */
+    scroll-snap-align: center; /* 스크롤 시 각 슬라이드가 중앙에 오도록 설정 */
+    transition: transform 0.3s ease-in-out;
+  }
+
   .slider img {
     width: calc(100% - 20px); /* 모바일에서는 하나씩 */
     aspect-ratio: 1 / 1;
@@ -1040,6 +1055,21 @@ footer {
 
   body {
     padding-top: 80px;
+  }
+
+  .scroll-container {
+    display: flex;
+    overflow-x: hidden; /* 가로 스크롤 활성화 */
+    scroll-snap-type: x mandatory; /* 스크롤 시 각 슬라이드 맞춤 */
+    padding-left: 15vw; /* 왼쪽 패딩 */
+    padding-right: 15vw; /* 오른쪽 패딩 */
+  }
+
+  .scroll-item {
+    flex: 0 0 70%; /* 슬라이드 너비를 70%로 설정 */
+    margin: 0 15vw; /* 양 옆에 약간의 간격을 추가 */
+    scroll-snap-align: center; /* 스크롤 시 각 슬라이드가 중앙에 오도록 설정 */
+    transition: transform 0.3s ease-in-out;
   }
 
   /* 로고 이미지 스타일 수정 */
