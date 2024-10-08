@@ -346,3 +346,30 @@ header {
     height: 48px;
   }
 }
+@media (max-width: 480px) {
+  .logo {
+    display: none; /* 기본 로고 숨기기 */
+  }
+
+  /* 헤더 컨텐츠 안에 새로운 로고 이미지 삽입 */
+  .header-content::before {
+    content: url("../images/logowithoutla.png"); /* 새로운 로고 이미지 */
+    width: 98px; /* 새로운 로고 크기 설정 */
+    height: 33px;
+    display: block; /* 이미지를 블록 요소로 */
+    position: absolute; /* 절대 위치 설정 */
+    top: 50%; /* 수직 중앙 정렬 */
+    left: 30px; /* 왼쪽에 위치하도록 설정 */
+    transform: translateY(-50%); /* 수직 중앙 정렬 보정 */
+  }
+
+  .header-content {
+    justify-content: flex-start; /* 헤더 컨텐츠를 왼쪽 정렬 */
+    padding: 0 24px; /* 좌우 패딩 조정 */
+  }
+
+  /* 아이콘과 버튼의 위치 조정 */
+  .header-buttons {
+    margin-left: 120px; /* 로고와의 간격 설정 */
+  }
+}
