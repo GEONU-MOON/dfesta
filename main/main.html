@@ -98,32 +98,57 @@
           <img src="../images/video.png" class="video-image" />
         </div>
       </section>
-
       <section id="event">
         <div class="section-title">Event</div>
         <div class="event-wrapper">
           <div class="event-content">
-            <div class="event-heading">Register your email</div>
-            <div class="event-description">
-              to stay current on all D'festa events and Artist visits. <br />
-              We will send you<br />
-              <span class="promo-highlight"
-                >a promo code for a free photo postcard 🎁</span
-              >
+            <!-- 기존 이메일 입력 폼 -->
+            <div class="email-form active">
+              <div class="event-heading">Register your email</div>
+              <div class="event-description">
+                to stay current on all D'festa events and Artist visits. <br />
+                We will send you<br />
+                <span class="promo-highlight"
+                  >a promo code for a free photo postcard 🎁</span
+                >
+              </div>
+              <form>
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  class="email-input"
+                />
+                <button type="button" class="continue-button">Continue</button>
+              </form>
+              <div class="terms-text">
+                By continuing, you acknowledge that you understand and agree to
+                the
+                <span class="terms-link">Terms of Use</span> and
+                <span class="privacy-link">Privacy Policy</span>.
+              </div>
             </div>
-            <form>
-              <input
-                type="email"
-                placeholder="Email Address"
-                class="email-input"
-              />
-              <button type="submit" class="continue-button">Continue</button>
-            </form>
-            <div class="terms-text">
-              By continuing, you acknowledge that you understand and agree to
-              the
-              <span class="terms-link">Terms of Use</span> and
-              <span class="privacy-link">Privacy Policy</span>.
+
+            <!-- 새로운 인증 코드 폼 -->
+            <div class="verify-form">
+              <h2>Enter Code</h2>
+              <p>
+                A one-time code was sent to your email. This code expires in 5
+                minutes.
+              </p>
+              <div class="code-input-container">
+                <input type="text" class="code-input" maxlength="1" />
+                <input type="text" class="code-input" maxlength="1" />
+                <input type="text" class="code-input" maxlength="1" />
+                <input type="text" class="code-input" maxlength="1" />
+                <input type="text" class="code-input" maxlength="1" />
+              </div>
+              <button type="button" class="verify-button" disabled>
+                Verify
+              </button>
+              <div class="resend-links">
+                <span>Didn’t receive a code?</span> <a href="#">Resend</a><br />
+                <span>Enter the wrong email?</span> <a href="#">Try again</a>
+              </div>
             </div>
           </div>
           <div class="insta-image">
@@ -387,6 +412,57 @@
             continueButton.style.color = "#a4a4a4"; // 텍스트 색상도 복구
           }
         });
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const continueButton = document.querySelector(".continue-button");
+        const emailForm = document.querySelector(".email-form");
+        const verifyForm = document.querySelector(".verify-form");
+
+        // Continue 버튼 클릭 시 이메일 폼 숨기고 인증 코드 폼 표시
+        continueButton.addEventListener("click", (e) => {
+          e.preventDefault();
+          emailForm.classList.remove("active");
+          verifyForm.classList.add("active");
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const codeInputs = document.querySelectorAll(".code-input");
+        const verifyButton = document.querySelector(".verify-button");
+
+        // 모든 입력 필드에서 이벤트 리스너 등록
+        codeInputs.forEach((input, index) => {
+          input.addEventListener("input", (e) => {
+            // 입력값이 존재하고 다음 인풋이 있으면 포커스를 이동
+            if (e.target.value && index < codeInputs.length - 1) {
+              codeInputs[index + 1].focus();
+            }
+            checkCodeFilled(); // 전체 필드가 채워졌는지 체크
+          });
+
+          input.addEventListener("keydown", (e) => {
+            // 백스페이스 클릭 시 이전 입력 필드로 이동
+            if (e.key === "Backspace" && !e.target.value && index > 0) {
+              codeInputs[index - 1].focus();
+            }
+          });
+        });
+
+        // 입력 필드 전체가 채워졌는지 확인하는 함수
+        function checkCodeFilled() {
+          const allFilled = Array.from(codeInputs).every(
+            (input) => input.value.trim() !== ""
+          );
+          if (allFilled) {
+            verifyButton.classList.add("active");
+            verifyButton.disabled = false;
+          } else {
+            verifyButton.classList.remove("active");
+            verifyButton.disabled = true;
+          }
+        }
       });
     </script>
   </body>
