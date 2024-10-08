@@ -89,6 +89,20 @@ body {
   background: none; /* 배경 없음 */
 }
 
+.scroll-container {
+  display: flex;
+  overflow-x: hidden;
+  scroll-snap-type: x mandatory; /* 수평 스크롤 시 각 슬라이드 맞춤 */
+  scroll-behavior: smooth; /* 부드러운 스크롤 효과 */
+}
+
+.scroll-item {
+  scroll-snap-align: start; /* 각 슬라이드가 시작 위치에 정렬 */
+  flex: 0 0 calc((100% - 40px) / 3); /* 40px은 전체 슬라이드 간의 마진 합 */
+  margin: 0 10px; /* 각 슬라이드 간의 간격 설정 */
+  box-sizing: border-box; /* 슬라이드의 너비 계산 방식 설정 */
+}
+
 /* 첫 번째 인트로 이미지의 부모 wrapper */
 .intro-image1-wrapper {
   background-image: url("../images/gradation2.png"); /* 배경 이미지 */

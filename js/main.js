@@ -106,52 +106,78 @@ Object.keys(sliders).forEach((key) => {
   images[key].forEach((src) => {
     const img = document.createElement("img");
     img.src = src;
+    img.className = "scroll-item";
+    img.alt = `Slide Image for ${key}`;
     sliders[key].appendChild(img);
+  });
+
+  // 페이지 인디케이터 초기화
+  updatePageIndicator(key);
+
+  // 슬라이더의 스크롤 이벤트 리스너 추가
+  sliders[key].addEventListener("scroll", () => {
+    updatePageIndicator(key);
   });
 });
 
-let currentIndex = {
-  location: 0,
-  exhibition: 0,
-  movie: 0,
-  experience: 0,
-  artists: 0,
-  retail: 0,
-};
-
-// 슬라이더 이동 함수
+// 슬라이드 이동 함수
 function slide(section, direction) {
   const slider = sliders[section];
-  const totalImages = images[section].length;
+  if (!slider.querySelector("img")) return;
 
-  const groupSize = window.innerWidth <= 768 ? 1 : 3;
-  const totalGroups = Math.ceil(totalImages / groupSize);
+  const imageWidth = slider.querySelector(".scroll-item").clientWidth + 20; // 이미지 너비 + 마진
+  const groupSize = 3; // 그룹당 보여줄 이미지 수
+  const currentPage = Math.round(slider.scrollLeft / (imageWidth * groupSize)); // 현재 페이지
 
-  currentIndex[section] += direction * groupSize;
+  // 전체 페이지 수
+  const totalPages = Math.ceil(images[section].length / groupSize);
+  let newPage = currentPage + direction;
 
-  if (currentIndex[section] < 0) {
-    currentIndex[section] = (totalGroups - 1) * groupSize;
-  } else if (currentIndex[section] >= totalImages) {
-    currentIndex[section] = 0;
+  if (newPage >= totalPages) {
+    newPage = 0; // 첫 페이지로 이동
+  } else if (newPage < 0) {
+    newPage = totalPages - 1; // 마지막 페이지로 이동
   }
 
-  const offset = -(currentIndex[section] / groupSize) * 100;
-  slider.style.transform = `translateX(${offset}%)`;
+  slider.scrollTo({
+    left: newPage * imageWidth * groupSize,
+    behavior: "smooth",
+  });
 
-  const pageIndicator = document.getElementById(`${section}-page-indicator`);
-  const currentPage = Math.ceil(currentIndex[section] / groupSize) + 1;
-  pageIndicator.textContent = `${currentPage} | ${totalGroups}`;
+  updatePageIndicator(section); // 페이지 인디케이터 즉시 업데이트
 }
 
-// 초기 로드 및 화면 크기 변경 시 슬라이더 조정
+// 페이지 인디케이터 업데이트 함수
+function updatePageIndicator(section) {
+  const slider = sliders[section];
+  if (!slider.querySelector("img")) return;
+
+  const imageWidth = slider.querySelector(".scroll-item").clientWidth + 20; // 이미지 너비 + 마진
+  const totalImages = images[section].length;
+
+  // 한 페이지에 표시할 슬라이드 수
+  const groupSize = 3;
+  const totalGroups = Math.ceil(totalImages / groupSize);
+
+  // 현재 페이지 계산
+  const currentPage =
+    Math.round(slider.scrollLeft / (imageWidth * groupSize)) + 1;
+
+  // 페이지 인디케이터 업데이트
+  const pageIndicator = document.getElementById(`${section}-page-indicator`);
+  pageIndicator.querySelector(".current-page").textContent = `${currentPage}`;
+  pageIndicator.querySelector(".total-pages").textContent = `${totalGroups}`;
+}
+
+// 초기 로드 및 화면 크기 변경 시 페이지 인디케이터 설정
 window.addEventListener("resize", () => adjustPageIndicators());
 window.addEventListener("load", () => adjustPageIndicators());
 
 function adjustPageIndicators() {
   Object.keys(sliders).forEach((key) => {
     const pageIndicator = document.getElementById(`${key}-page-indicator`);
-    const groupSize = window.innerWidth <= 768 ? 1 : 3;
+    const groupSize = 3;
     const totalPages = Math.ceil(images[key].length / groupSize);
-    pageIndicator.textContent = `1 | ${totalPages}`;
+    pageIndicator.querySelector(".total-pages").textContent = `${totalPages}`;
   });
 }
