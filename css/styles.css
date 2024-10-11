@@ -236,6 +236,11 @@ section {
   text-align: center;
 }
 
+.video-image {
+  width: 1244px;
+  height: 670px;
+}
+
 /* ===========================
    Slider Styles (슬라이더 스타일)
 ============================== */
@@ -364,7 +369,7 @@ section {
 /* 이벤트 섹션 설명 텍스트 스타일 */
 .event-description {
   font-size: 16px;
-  color: #ffffff; /* 설명 텍스트 색상 */
+  color: #71758c; /* 설명 텍스트 색상 */
   margin-bottom: 20px; /* 하단 여백 */
   line-height: 1.6; /* 줄 간격 */
 }
@@ -503,24 +508,65 @@ form {
 /* 약관 텍스트 스타일 */
 .terms-text {
   font-size: 15px;
-  color: #9f9f9f;
+  color: #666666;
   margin-top: 15px; /* 상단 여백 */
 }
 
 /* 약관 링크 스타일 */
 .terms-link,
 .privacy-link {
-  color: #ffffff;
+  color: #666666;
   text-decoration: underline; /* 밑줄 추가 */
 }
 
 /* ===========================
    Instagram Image Styles (인스타그램 이미지)
 ============================== */
-.insta-image {
-  width: 581px;
-  height: 577px;
-  margin: 0 auto; /* 이미지 중앙 정렬 */
+/* 인스타그램 섹션 스타일 */
+.instagram-section {
+  width: 100%; /* 전체 너비 */
+  margin: 50px 0; /* 상하 여백 */
+}
+
+/* 인스타그램 제목 스타일 */
+.instagram-title {
+  font-size: 28x; /* 제목 폰트 크기 */
+  font-weight: bold; /* 굵은 글씨 */
+  color: #ffffff; /* 텍스트 색상: 흰색 */
+  margin-bottom: 20px; /* 제목 하단 여백 */
+}
+
+/* 인스타그램 아이디 스타일 */
+.instagram-id {
+  font-size: 20px; /* 아이디 폰트 크기 */
+  font-weight: 400; /* 보통 글씨 */
+  color: #71758c; /* 회색 텍스트 */
+  margin-left: 10px; /* 왼쪽 여백 */
+}
+
+/* 인스타그램 이미지 컨테이너 */
+.insta-image-container {
+  display: flex;
+  flex-direction: column; /* 세로로 정렬 */
+  align-items: center;
+  gap: 20px; /* 줄 사이의 간격 */
+}
+
+/* 각 줄의 이미지 배치 */
+.insta-image-row {
+  display: flex;
+  justify-content: center;
+  gap: calc(
+    (1244px - 286px * 4) / 3
+  ); /* 전체 너비에서 이미지 너비를 빼고, 3으로 나눈 값 */
+}
+
+/* 개별 인스타그램 이미지 스타일 */
+.instaImage {
+  width: 286px;
+  height: 286px;
+  object-fit: cover; /* 이미지가 잘리지 않도록 비율 유지 */
+  transition: transform 0.3s ease-in-out; /* 이미지 호버 시 애니메이션 */
 }
 /* ===========================
    Bridge Image Styles (브리지 이미지)
@@ -944,7 +990,7 @@ footer {
     border-radius: 5px;
     background: #1c1c1c; /* 입력 필드 배경색 */
     border: 1px solid #333333; /* 테두리 색상 */
-    color: #9f9f9f; /* 텍스트 색상 */
+
     outline: none;
     padding: 0;
     padding-left: 10px;
@@ -957,7 +1003,7 @@ footer {
     background: #333333; /* 배경색 */
     border: none;
     border-radius: 5px;
-    color: #a4a4a4; /* 텍스트 색상 */
+
     font-weight: 700;
     cursor: pointer; /* 커서 모양 변경 */
   }
@@ -967,7 +1013,7 @@ footer {
     font-size: 11px;
     font-weight: 700;
     line-height: 16px;
-    color: #9f9f9f;
+
     margin-top: 15px; /* 상단 여백 */
     padding: 10px;
     text-align: center; /* 텍스트 중앙 정렬 */
@@ -975,20 +1021,43 @@ footer {
     margin-right: auto; /* 우측 여백 자동 설정 */
   }
 
-  /* 약관 링크 스타일 */
-  .terms-link,
-  .privacy-link {
-    color: #ffffff;
-    text-decoration: underline; /* 밑줄 추가 */
-  }
   .instaImage {
     width: 327px;
     height: 325px;
   }
-  .insta-image {
-    width: 327px;
-    height: 325px;
-    margin: 0 auto; /* 이미지 중앙 정렬 */
+  /* ===========================
+   Instagram Image Styles (인스타그램 이미지)
+============================== */
+  /* 인스타그램 섹션 스타일 */
+  .instagram-section {
+    width: 100%; /* 전체 너비 */
+    margin: 50px 0; /* 상하 여백 */
+  }
+
+  /* 인스타그램 제목 스타일 */
+  .instagram-title {
+    font-size: 20x; /* 제목 폰트 크기 */
+  }
+
+  /* 인스타그램 아이디 스타일 */
+  .instagram-id {
+    font-size: 12px; /* 아이디 폰트 크기 */
+  }
+
+  /* 각 줄의 이미지 배치 */
+  .insta-image-row {
+    display: flex;
+    justify-content: center;
+    gap: calc(
+      (594px - 136px * 4) / 3
+    ); /* 전체 너비에서 이미지 너비를 빼고, 3으로 나눈 값 */
+  }
+
+  /* 개별 인스타그램 이미지 스타일 */
+  .instaImage {
+    width: 136px;
+    height: 136px;
+    object-fit: cover; /* 이미지가 잘리지 않도록 비율 유지 */
   }
 
   .bridge-image {
