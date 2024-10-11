@@ -17,13 +17,18 @@
   <body>
     <header class="header">
       <div class="header-content">
+        <!-- 기본 로고 -->
         <img
           src="../images/title.png"
           alt="DFESTA Logo"
-          class="logo"
-          onclick="location.href='main.html'"
+          class="logo desktop-logo"
         />
-
+        <!-- 모바일용 로고 (화면 크기가 작을 때만 보임) -->
+        <img
+          src="../images/logowithoutla.png"
+          alt="Mobile DFESTA Logo"
+          class="logo mobile-logo"
+        />
         <div class="header-buttons">
           <button class="buy-tickets">Buy Tickets</button>
           <div class="user-icon">
@@ -32,116 +37,138 @@
         </div>
       </div>
     </header>
-    <main class="main-content login-page">
+
+    <main id="main-content" class="main-content login-page">
+      <!-- 공통 Welcome Container -->
       <div class="welcome-container">
-        <div class="welcome-text">Welcome to D’festa</div>
-        <div class="sub-text">
+        <!-- 로그인 폼일 때 Welcome 텍스트 -->
+        <div id="login-welcome" class="welcome-text">Welcome to D’festa</div>
+        <!-- 인증 코드 폼일 때 Welcome 텍스트 -->
+        <div id="verify-welcome" class="welcome-text" style="display: none">
+          Enter Code
+        </div>
+        <!-- 공통 Sub 텍스트 -->
+        <div id="login-subtext" class="sub-text">
           Please enter your email to login or create an account with D’festa.
         </div>
+        <div id="verify-subtext" class="sub-text" style="display: none">
+          A one-time code was sent to your email. This code expires in 5
+          minutes.
+        </div>
       </div>
-      <form class="login-form">
-        <label for="email">Enter your email</label>
-        <div class="input-container">
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Email Address"
-            required
-          />
-        </div>
-        <div class="terms">
-          By continuing, you acknowledge that you understand and agree to the
-          <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
-        </div>
-        <!-- 버튼 위치를 약관 텍스트 밑으로 이동 -->
-        <button type="submit" class="continue-button">Continue</button>
-      </form>
-    </main>
 
-    <!-- <footer>
-      <div class="footer-container">
-        <div class="footer-layout">
-          <div class="footer-left">
-            <img
-              src="../images/footer-logo.png"
-              alt="DFESTA Logo"
-              class="footer-logo"
+      <!-- 로그인 폼 -->
+      <div id="login-container" class="form-container">
+        <form class="login-form">
+          <label for="email">Enter your email</label>
+          <div class="input-container">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email Address"
+              required
             />
-            <div class="footer-bottom">
-              <div>Copyright © 2024 DFESTA. All rights reserved.</div>
+          </div>
+          <div class="terms">
+            By continuing, you acknowledge that you understand and agree to the
+            <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
+          </div>
+          <button type="button" class="continue-button">Continue</button>
+        </form>
+      </div>
+
+      <!-- 인증 코드 폼 -->
+      <div id="verify-container" class="form-container" style="display: none">
+        <form class="verify-form">
+          <div class="code-label-container">
+            <label for="email">Verify your email</label>
+          </div>
+          <div class="code-container">
+            <input type="text" class="code-input" maxlength="1" />
+            <input type="text" class="code-input" maxlength="1" />
+            <input type="text" class="code-input" maxlength="1" />
+            <input type="text" class="code-input" maxlength="1" />
+            <input type="text" class="code-input" maxlength="1" />
+          </div>
+          <button type="button" class="verify-button">Verify</button>
+          <div class="resend-options">
+            <div>
+              Didn't receive a code?
+              <a href="#" class="resend-link">Resend</a>
+            </div>
+            <div>
+              Enter the wrong email?
+              <a href="#" class="try-again-link">Try again</a>
             </div>
           </div>
-          <div class="social-icons">
-            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
-            <a href="#" target="_blank"><i class="fas fa-envelope"></i></a>
-          </div>
-        </div>
+        </form>
       </div>
-    </footer> -->
+    </main>
 
-    <!-- 플로팅 버튼: 이메일 아이콘 -->
-    <!-- <button class="floating-button email-button">
-      <i class="fas fa-envelope"></i>
-    </button> -->
-
-    <!-- 플로팅 버튼: 스크롤 업 아이콘 -->
-    <!-- <button class="floating-button scroll-up-button">
-      <i class="fas fa-arrow-up"></i>
-    </button> -->
-
-    <!-- <script>
-      // 스크롤 업 버튼 클릭 시 페이지 상단으로 부드럽게 스크롤 이동
-      document
-        .querySelector(".scroll-up-button")
-        .addEventListener("click", function () {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-
-      // 스크롤 이벤트를 통해 스크롤 업 버튼 표시/숨기기
-      window.onscroll = function () {
-        const scrollUpButton = document.querySelector(".scroll-up-button");
-        if (window.scrollY > 200) {
-          // 스크롤이 200px 이상 내려가면 표시
-          scrollUpButton.style.display = "flex";
-        } else {
-          scrollUpButton.style.display = "none";
-        }
-      };
-    </script> -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // 이메일 입력 필드와 버튼 선택
+        const mainContent = document.getElementById("main-content");
         const emailInput = document.querySelector("#email");
         const continueButton = document.querySelector(".continue-button");
+        const loginContainer = document.getElementById("login-container");
+        const verifyContainer = document.getElementById("verify-container");
+        const loginWelcome = document.getElementById("login-welcome");
+        const verifyWelcome = document.getElementById("verify-welcome");
+        const loginSubtext = document.getElementById("login-subtext");
+        const verifySubtext = document.getElementById("verify-subtext");
 
-        // 초기에는 버튼을 비활성화 상태로 설정
+        // 이메일 입력 시 continue 버튼 활성화/비활성화
         continueButton.disabled = true;
-
-        // 이메일 입력 필드에 입력 이벤트 리스너 추가
         emailInput.addEventListener("input", () => {
           if (emailInput.value.trim() !== "") {
-            // 입력 값이 있을 때 버튼 색상 변경 및 클릭 가능하게 설정
             continueButton.style.backgroundColor = "rgba(97, 57, 255, 1)";
-            continueButton.style.color = "white"; // 텍스트 색상도 변경
-            continueButton.disabled = false; // 버튼 활성화
+            continueButton.style.color = "white";
+            continueButton.disabled = false;
           } else {
-            // 입력 값이 없을 때 기본 스타일로 복구 및 클릭 불가 설정
             continueButton.style.backgroundColor = "#333333";
-            continueButton.style.color = "#a4a4a4"; // 텍스트 색상도 복구
-            continueButton.disabled = true; // 버튼 비활성화
+            continueButton.style.color = "#a4a4a4";
+            continueButton.disabled = true;
           }
         });
 
-        // 버튼 클릭 시 enterCode.html로 이동
-        continueButton.addEventListener("click", (e) => {
-          e.preventDefault(); // 기본 폼 제출 이벤트 막기
-          if (continueButton.disabled) {
-            return; // 버튼이 비활성화 상태면 실행하지 않음
-          }
-          window.location.href = "enterCode.html"; // enterCode.html로 이동
+        // Continue 버튼 클릭 시 인증 코드 폼으로 전환
+        continueButton.addEventListener("click", () => {
+          mainContent.classList.add("verify-active");
+          loginContainer.style.display = "none"; // 로그인 폼 숨기기
+          verifyContainer.style.display = "flex"; // 인증 코드 폼 보이기
+          loginWelcome.style.display = "none"; // 로그인 Welcome 텍스트 숨기기
+          verifyWelcome.style.display = "block"; // 인증 코드 Welcome 텍스트 보이기
+          loginSubtext.style.display = "none"; // 로그인 Sub 텍스트 숨기기
+          verifySubtext.style.display = "block"; // 인증 코드 Sub 텍스트 보이기
+        });
+
+        // 인증 코드 입력 필드와 버튼 선택
+        const codeInputs = document.querySelectorAll(".code-input");
+        const verifyButton = document.querySelector(".verify-button");
+
+        // 코드 입력 시 버튼 활성화/비활성화
+        codeInputs.forEach((input, index) => {
+          input.addEventListener("input", () => {
+            if (input.value.length === 1 && index < codeInputs.length - 1) {
+              codeInputs[index + 1].focus();
+            }
+
+            // 모든 코드 입력 필드가 채워졌는지 확인
+            const allFilled = Array.from(codeInputs).every(
+              (input) => input.value.trim() !== ""
+            );
+
+            if (allFilled) {
+              verifyButton.style.backgroundColor = "rgba(97, 57, 255, 1)";
+              verifyButton.style.color = "white";
+              verifyButton.disabled = false;
+            } else {
+              verifyButton.style.backgroundColor = "#333333";
+              verifyButton.style.color = "#a4a4a4";
+              verifyButton.disabled = true;
+            }
+          });
         });
       });
     </script>
