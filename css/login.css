@@ -151,12 +151,12 @@ header {
 .input-container input,
 .code-input {
   flex: 1;
-  padding: 0 15px; /* 패딩 설정 */
+
   border: 1px solid #7e7e7e; /* 테두리 색상 */
   border-radius: 5px;
   background-color: black; /* 배경색 설정 */
   color: #7e7e7e; /* 텍스트 색상 설정 */
-  margin-right: 10px;
+
   height: 60px;
 }
 
@@ -265,10 +265,21 @@ header {
   }
 
   .welcome-container {
-    margin-top: 0;
-    margin-bottom: 20px;
-    width: 100%;
-    background-size: cover;
+    margin-top: 0; /* 상단 여백 제거 */
+    margin-bottom: 20px; /* 기존 상단 여백 */
+    background: url("../images/login.png") center/cover no-repeat; /* 배경 이미지 경로 설정 */
+    padding-left: 40px; /* 좌측 패딩 */
+    padding-right: 40px; /* 우측 패딩 */
+    padding-bottom: 40px; /* 하단 패딩 */
+    background-size: 674px 240px; /* 이미지의 정확한 크기 설정 */
+    width: 674px; /* 컨테이너 너비 설정 */
+    height: 240px; /* 컨테이너 높이 설정 */
+    max-width: 100%; /* 반응형을 위해 최대 너비 설정 */
+    display: flex; /* Flexbox 설정 */
+    flex-direction: column; /* 세로 방향 정렬 */
+    justify-content: center; /* 수직 중앙 정렬 */
+    align-items: center; /* 수평 중앙 정렬 */
+    text-align: center; /* 텍스트 중앙 정렬 */
   }
 
   .welcome-text {
@@ -279,6 +290,20 @@ header {
     font-size: 18px;
     margin: 10px 0 20px;
     width: 266px;
+  }
+  .verify-form {
+    width: 304px;
+    max-width: 100%;
+  }
+
+  .terms {
+    margin-bottom: 20px;
+    font-size: 11px;
+  }
+
+  .code-input {
+    width: 48px;
+    height: 48px;
   }
 
   .login-form,
@@ -310,5 +335,28 @@ header {
 
   .header-buttons {
     margin-left: 120px;
+  }
+
+  .welcome-container {
+    margin-top: 0; /* 상단 여백 제거 */
+    margin-bottom: 20px; /* 기존 상단 여백 */
+    background: url("../images/login.png") center/cover no-repeat; /* 배경 이미지 경로 설정 */
+    padding-left: 40px; /* 좌측 패딩 */
+    padding-right: 40px; /* 우측 패딩 */
+    padding-bottom: 40px; /* 하단 패딩 */
+    background-size: 375px 220px; /* 이미지의 정확한 크기 설정 */
+    width: 375px; /* 컨테이너 너비 설정 */
+    height: 220px; /* 컨테이너 높이 설정 */
+    max-width: 100%; /* 반응형을 위해 최대 너비 설정 */
+    display: flex; /* Flexbox 설정 */
+    flex-direction: column; /* 세로 방향 정렬 */
+    justify-content: center; /* 수직 중앙 정렬 */
+    align-items: center; /* 수평 중앙 정렬 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+  }
+
+  .terms {
+    margin-bottom: 20px;
+    font-size: 11px;
   }
 }
