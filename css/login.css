@@ -269,8 +269,8 @@ header {
     padding-left: 40px; /* 좌측 패딩 */
     padding-right: 40px; /* 우측 패딩 */
     padding-bottom: 40px; /* 하단 패딩 */
-    background-size: 674px 240px; /* 이미지의 정확한 크기 설정 */
-    width: 674px; /* 컨테이너 너비 설정 */
+    background-size: 800px 240px; /* 이미지의 정확한 크기 설정 */
+    width: 800px; /* 컨테이너 너비 설정 */
     height: 240px; /* 컨테이너 높이 설정 */
     max-width: 100%; /* 반응형을 위해 최대 너비 설정 */
     display: flex; /* Flexbox 설정 */
@@ -342,8 +342,8 @@ header {
     padding-left: 40px; /* 좌측 패딩 */
     padding-right: 40px; /* 우측 패딩 */
     padding-bottom: 40px; /* 하단 패딩 */
-    background-size: 375px 220px; /* 이미지의 정확한 크기 설정 */
-    width: 375px; /* 컨테이너 너비 설정 */
+    background-size: 480px 220px; /* 이미지의 정확한 크기 설정 */
+    width: 480px; /* 컨테이너 너비 설정 */
     height: 220px; /* 컨테이너 높이 설정 */
     max-width: 100%; /* 반응형을 위해 최대 너비 설정 */
     display: flex; /* Flexbox 설정 */
