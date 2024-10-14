@@ -138,7 +138,7 @@ header {
   font-size: 20px;
   color: #ffffff;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   display: block;
 }
 
@@ -157,6 +157,7 @@ header {
   background-color: black; /* 배경색 설정 */
   color: #7e7e7e; /* 텍스트 색상 설정 */
   height: 60px;
+  font-size: 20px;
 }
 
 .input-container input {
@@ -188,12 +189,12 @@ header {
   width: 100%;
   color: #a4a4a4;
   border: none;
-  padding: 12px 20px;
   border-radius: 5px;
   cursor: pointer;
   font-weight: 500;
   height: 60px;
   transition: background 0.3s ease;
+  font-size: 20px;
 }
 
 .verify-button {
@@ -203,12 +204,12 @@ header {
 .terms {
   margin-bottom: 40px;
   font-size: 15px;
-  color: #aaa;
+  color: #666666;
   height: 41px;
 }
 
 .terms a {
-  color: #aaa;
+  color: #666666;
   text-decoration: underline;
   transition: color 0.3s ease;
 }
