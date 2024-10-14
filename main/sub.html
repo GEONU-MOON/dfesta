@@ -113,14 +113,21 @@
         const loginSubtext = document.getElementById("login-subtext");
         const verifySubtext = document.getElementById("verify-subtext");
 
+        // 이메일 정규식 패턴
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
         // 이메일 입력 시 continue 버튼 활성화/비활성화
         continueButton.disabled = true;
         emailInput.addEventListener("input", () => {
-          if (emailInput.value.trim() !== "") {
+          const emailValue = emailInput.value.trim();
+
+          if (emailPattern.test(emailValue)) {
+            // 이메일 형식이 유효하면 버튼 활성화
             continueButton.style.backgroundColor = "rgba(97, 57, 255, 1)";
             continueButton.style.color = "white";
             continueButton.disabled = false;
           } else {
+            // 유효하지 않으면 버튼 비활성화
             continueButton.style.backgroundColor = "#333333";
             continueButton.style.color = "#a4a4a4";
             continueButton.disabled = true;
