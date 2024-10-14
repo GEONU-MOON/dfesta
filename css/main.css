@@ -60,7 +60,7 @@ header {
 }
 
 /* 프로필 아이콘 스타일 */
-.people {
+.shape {
   width: 35.2px; /* 너비 설정 */
   height: 35.6px; /* 높이 설정 */
 }
@@ -803,7 +803,7 @@ footer {
   }
 
   /* 프로필 아이콘 스타일 수정 */
-  .people {
+  .shape {
     width: 24px; /* 아이콘 너비 */
     height: 24px; /* 아이콘 높이 */
     position: absolute; /* 위치 속성 절대값 */
@@ -1237,7 +1237,7 @@ footer {
   }
 
   /* 프로필 아이콘 스타일 수정 */
-  .people {
+  .shape {
     width: 24px; /* 아이콘 너비 */
     height: 24px; /* 아이콘 높이 */
     position: absolute; /* 위치 속성 절대값 */
@@ -1591,7 +1591,7 @@ footer {
 }
 
 @media (max-width: 350px) {
-  .people {
+  .shape {
     left: 1px;
     margin-left: 300px;
     padding: 3px 4px; /* padding 설정 */

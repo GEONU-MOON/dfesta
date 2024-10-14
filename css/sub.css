@@ -53,7 +53,7 @@ header {
   transition: background 0.3s ease-in-out;
 }
 
-.people {
+.shape {
   width: 35.2px;
   height: 35.6px;
 }
@@ -262,7 +262,7 @@ header {
     right: 24px;
   }
 
-  .people {
+  .shape {
     width: 24px;
     height: 24px;
     margin-left: 10px;
