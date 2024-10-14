@@ -111,7 +111,7 @@ header {
   font-weight: 500;
   text-align: center;
   color: #e5e5e5;
-  margin: 10px 0 20px;
+  margin: 10px 0 10px;
 }
 
 /* ===========================
@@ -123,6 +123,7 @@ header {
   border-radius: 10px;
   width: 388px;
   max-width: 100%;
+  margin-top: 40px;
 }
 
 .label-container {
@@ -158,6 +159,10 @@ header {
   height: 60px;
 }
 
+.input-container input {
+  padding: 0 20px;
+}
+
 /* 코드 입력 상자 스타일 */
 .code-container {
   display: flex;
@@ -191,11 +196,14 @@ header {
   transition: background 0.3s ease;
 }
 
+.verify-button {
+  margin-top: 20px;
+}
+
 .terms {
-  margin-top: 10px;
+  margin-bottom: 40px;
   font-size: 15px;
   color: #aaa;
-  text-align: center;
   height: 41px;
 }
 
@@ -205,6 +213,11 @@ header {
   transition: color 0.3s ease;
 }
 
+.info-mes {
+  color: #666666;
+  font-size: 15px;
+}
+
 .resend-options {
   text-align: center;
   margin-top: 10px;
@@ -212,6 +225,7 @@ header {
 
 .resend-link,
 .try-again-link {
+  margin-left: 15px;
   color: #6c5ce7;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -268,7 +282,7 @@ header {
     background: url("../images/login.png") center/cover no-repeat; /* 배경 이미지 경로 설정 */
     padding-left: 40px; /* 좌측 패딩 */
     padding-right: 40px; /* 우측 패딩 */
-    padding-bottom: 40px; /* 하단 패딩 */
+
     background-size: 800px 240px; /* 이미지의 정확한 크기 설정 */
     width: 800px; /* 컨테이너 너비 설정 */
     height: 240px; /* 컨테이너 높이 설정 */
