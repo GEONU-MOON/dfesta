@@ -479,10 +479,10 @@ form {
 
 /* 이메일 입력란 스타일 */
 .email-input {
-  padding: 15px;
+  padding: 15px 10px;
   font-size: 20px;
   font-weight: bold;
-  width: 570px; /* 입력 필드 너비 */
+  width: 388px; /* 입력 필드 너비 */
   border: none;
   border-radius: 5px;
   background: #1c1c1c; /* 입력 필드 배경색 */
