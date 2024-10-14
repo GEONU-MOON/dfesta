@@ -108,7 +108,7 @@
         <div class="event-wrapper">
           <div class="event-content">
             <!-- 기존 이메일 입력 폼 -->
-            <div class="email-form active">
+            <form class="email-form active">
               <div class="event-heading">Register your email</div>
               <div class="event-description">
                 to stay current on all D'festa events and Artist visits. <br />
@@ -117,21 +117,26 @@
                   >a promo code for a free photo postcard 🎁</span
                 >
               </div>
-              <form>
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  class="email-input"
-                />
+              <div class="input-container">
+                <div class="input-wrapper">
+                  <input
+                    type="email"
+                    id="email-input"
+                    placeholder="Email Address"
+                    class="email-input"
+                    required
+                  />
+                  <div
+                    id="email-error-message"
+                    class="error-message"
+                    style="display: none"
+                  >
+                    Please enter a valid email
+                  </div>
+                </div>
                 <button type="button" class="continue-button">Continue</button>
-              </form>
-              <div class="terms-text">
-                By continuing, you acknowledge that you understand and agree to
-                the
-                <span class="terms-link">Terms of Use</span> and
-                <span class="privacy-link">Privacy Policy</span>.
               </div>
-            </div>
+            </form>
 
             <!-- 새로운 인증 코드 폼 -->
             <div class="verify-form">
@@ -477,20 +482,29 @@
     </script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // 이메일 입력 필드와 버튼 선택
-        const emailInput = document.querySelector(".email-input");
+        const emailInput = document.getElementById("email-input");
         const continueButton = document.querySelector(".continue-button");
+        const emailErrorMessage = document.getElementById(
+          "email-error-message"
+        );
+
+        // 이메일 정규식 패턴
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
         // 이메일 입력 필드에 입력 이벤트 리스너 추가
         emailInput.addEventListener("input", () => {
-          if (emailInput.value.trim() !== "") {
-            // 입력 값이 있을 때 버튼 색상 변경
+          if (emailPattern.test(emailInput.value.trim())) {
+            emailInput.classList.remove("invalid"); // 유효성 검사 통과 시 빨간 보더 제거
+            emailErrorMessage.style.display = "none"; // 에러 메시지 숨기기
+            continueButton.disabled = false; // 버튼 활성화
             continueButton.style.backgroundColor = "rgba(97, 57, 255, 1)";
             continueButton.style.color = "white"; // 텍스트 색상도 변경
           } else {
-            // 입력 값이 없을 때 기본 스타일로 복구
+            emailInput.classList.add("invalid"); // 유효성 검사 실패 시 빨간 보더 추가
+            emailErrorMessage.style.display = "block"; // 에러 메시지 표시
+            continueButton.disabled = true; // 버튼 비활성화
             continueButton.style.backgroundColor = "#333333";
-            continueButton.style.color = "#a4a4a4"; // 텍스트 색상도 복구
+            continueButton.style.color = "#a4a4a4"; // 텍스트 색상 복구
           }
         });
       });
