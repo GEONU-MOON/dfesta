@@ -54,7 +54,7 @@
 
       <!-- 로그인 폼 -->
       <div id="login-container" class="form-container">
-        <form class="login-form">
+        <form class="login-form" id="login-form">
           <label for="email">Enter your email</label>
           <div class="input-container">
             <input
@@ -64,6 +64,9 @@
               placeholder="Email Address"
               required
             />
+          </div>
+          <div id="error-message" class="error-message" style="display: none">
+            Please enter a valid email
           </div>
           <div class="terms">
             By continuing, you acknowledge that you understand and agree to the
@@ -106,6 +109,7 @@
         const mainContent = document.getElementById("main-content");
         const emailInput = document.querySelector("#email");
         const continueButton = document.querySelector(".continue-button");
+        const errorMessage = document.getElementById("error-message");
         const loginContainer = document.getElementById("login-container");
         const verifyContainer = document.getElementById("verify-container");
         const loginWelcome = document.getElementById("login-welcome");
@@ -122,27 +126,33 @@
           const emailValue = emailInput.value.trim();
 
           if (emailPattern.test(emailValue)) {
-            // 이메일 형식이 유효하면 버튼 활성화
+            // 이메일 형식이 유효하면 버튼 활성화 및 에러 메시지 숨김
             continueButton.style.backgroundColor = "rgba(97, 57, 255, 1)";
             continueButton.style.color = "white";
             continueButton.disabled = false;
+            emailInput.classList.remove("invalid");
+            errorMessage.style.display = "none";
           } else {
-            // 유효하지 않으면 버튼 비활성화
+            // 유효하지 않으면 버튼 비활성화 및 에러 메시지 표시
             continueButton.style.backgroundColor = "#333333";
             continueButton.style.color = "#a4a4a4";
             continueButton.disabled = true;
+            emailInput.classList.add("invalid");
+            errorMessage.style.display = "block";
           }
         });
 
         // Continue 버튼 클릭 시 인증 코드 폼으로 전환
         continueButton.addEventListener("click", () => {
-          mainContent.classList.add("verify-active");
-          loginContainer.style.display = "none"; // 로그인 폼 숨기기
-          verifyContainer.style.display = "flex"; // 인증 코드 폼 보이기
-          loginWelcome.style.display = "none"; // 로그인 Welcome 텍스트 숨기기
-          verifyWelcome.style.display = "block"; // 인증 코드 Welcome 텍스트 보이기
-          loginSubtext.style.display = "none"; // 로그인 Sub 텍스트 숨기기
-          verifySubtext.style.display = "block"; // 인증 코드 Sub 텍스트 보이기
+          if (emailPattern.test(emailInput.value.trim())) {
+            mainContent.classList.add("verify-active");
+            loginContainer.style.display = "none"; // 로그인 폼 숨기기
+            verifyContainer.style.display = "flex"; // 인증 코드 폼 보이기
+            loginWelcome.style.display = "none"; // 로그인 Welcome 텍스트 숨기기
+            verifyWelcome.style.display = "block"; // 인증 코드 Welcome 텍스트 보이기
+            loginSubtext.style.display = "none"; // 로그인 Sub 텍스트 숨기기
+            verifySubtext.style.display = "block"; // 인증 코드 Sub 텍스트 보이기
+          }
         });
 
         // 인증 코드 입력 필드와 버튼 선택

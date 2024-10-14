@@ -126,6 +126,19 @@ header {
   margin-top: 40px;
 }
 
+/* 유효성 검사 실패 시 보더와 에러 메시지 스타일 */
+.error-message {
+  color: #ff5c46;
+  font-size: 12px;
+  margin-bottom: 10px;
+
+  position: relative; /* 기본 위치 설정 */
+}
+
+.input-container input.invalid {
+  border: 1px solid #ff5c46; /* 유효성 검사 실패 시 빨간 보더 */
+}
+
 .label-container {
   display: flex;
   justify-content: flex-start;
