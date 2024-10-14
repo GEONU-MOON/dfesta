@@ -381,8 +381,51 @@ header {
     text-align: center; /* 텍스트 중앙 정렬 */
   }
 
+  .welcome-text {
+    width: 285px;
+    font-size: 30px;
+  }
+
+  .sub-text {
+    width: 285px;
+  }
+
   .terms {
     margin-bottom: 20px;
     font-size: 11px;
+  }
+
+  .login-form,
+  .verify-form {
+    margin-top: 10px;
+  }
+
+  .login-form label,
+  .verify-form label {
+    font-size: 18px;
+  }
+
+  .input-container input {
+    height: 48px;
+    font-size: 16px;
+  }
+
+  .continue-button,
+  .verify-button {
+    height: 48px;
+  }
+  .code-input {
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #7e7e7e;
+    border-radius: 8px;
+    background-color: #000;
+    color: #ffffff;
+  }
+
+  .verify-button {
+    margin-bottom: 24px;
   }
 }
