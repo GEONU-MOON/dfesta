@@ -520,12 +520,14 @@
         const continueButton = document.querySelector(".continue-button");
         const emailForm = document.querySelector(".email-form");
         const verifyForm = document.querySelector(".verify-form");
+        const termsText = document.querySelector(".terms-text");
 
         // Continue 버튼 클릭 시 이메일 폼 숨기고 인증 코드 폼 표시
         continueButton.addEventListener("click", (e) => {
           e.preventDefault();
           emailForm.classList.remove("active");
           verifyForm.classList.add("active");
+          termsText.style.display = "none"; // terms-text 숨기기
         });
       });
 
