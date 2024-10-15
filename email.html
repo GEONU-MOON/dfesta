@@ -12,6 +12,7 @@
 
   <body style="font-family: 'Lato', sans-serif; margin: 0; padding: 0">
     <div
+      id="container"
       style="
         background-color: white;
         padding: 40px 20px;
@@ -89,6 +90,7 @@
         <div>
           <a href="" style="text-decoration: none">
             <div
+              id="button"
               style="
                 margin: 0 auto;
                 background-color: #000000;
@@ -108,5 +110,40 @@
         </div>
       </div>
     </div>
+
+    <script>
+      function applyResponsiveStyles() {
+        const container = document.getElementById("container");
+        const button = document.getElementById("button");
+
+        // 800px 이하일 때 스타일 적용
+        if (window.innerWidth <= 800) {
+          container.style.width = "350px";
+          container.style.height = "500px";
+          button.style.width = "300px";
+          button.style.height = "45px";
+        } else {
+          // 원래 스타일로 복구
+          container.style.width = "464px";
+          container.style.height = "585px";
+          button.style.width = "400px";
+          button.style.height = "53px";
+        }
+
+        // 480px 이하일 때 스타일 적용
+        if (window.innerWidth <= 480) {
+          container.style.width = "90%";
+          container.style.height = "450px";
+          button.style.width = "250px";
+          button.style.height = "40px";
+        }
+      }
+
+      // 처음 로드될 때 스타일 적용
+      applyResponsiveStyles();
+
+      // 화면 크기 변경 시 스타일 업데이트
+      window.addEventListener("resize", applyResponsiveStyles);
+    </script>
   </body>
 </html>
