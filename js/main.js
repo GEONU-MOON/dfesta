@@ -253,3 +253,117 @@ window.addEventListener("load", () => adjustPageIndicators());
 function adjustPageIndicators() {
   Object.keys(sliders).forEach((key) => updatePageIndicator(key));
 }
+
+// 스크롤 업 버튼 클릭 시 페이지 상단으로 부드럽게 스크롤 이동
+document
+  .querySelector(".scroll-up-button")
+  .addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+// 스크롤 이벤트를 통해 스크롤 업 버튼 표시/숨기기
+window.onscroll = function () {
+  const scrollUpButton = document.querySelector(".scroll-up-button");
+  if (window.scrollY > 200) {
+    scrollUpButton.style.display = "flex";
+  } else {
+    scrollUpButton.style.display = "none";
+  }
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  // 이메일 버튼 클릭 시 이벤트 섹션으로 스크롤 이동
+  document.querySelector(".email-button").addEventListener("click", () => {
+    const eventSection = document.getElementById("event");
+    if (eventSection) {
+      eventSection.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  });
+
+  // 스크롤 업 버튼 표시/숨기기
+  window.onscroll = function () {
+    const scrollUpButton = document.querySelector(".scroll-up-button");
+    if (window.scrollY > 200) {
+      scrollUpButton.style.display = "flex";
+    } else {
+      scrollUpButton.style.display = "none";
+    }
+  };
+});
+
+// 이메일 입력 폼 유효성 검사
+document.addEventListener("DOMContentLoaded", () => {
+  const emailInput = document.getElementById("email-input");
+  const continueButton = document.querySelector(".continue-button");
+  const emailErrorMessage = document.getElementById("email-error-message");
+
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  emailInput.addEventListener("input", () => {
+    if (emailPattern.test(emailInput.value.trim())) {
+      emailInput.classList.remove("invalid");
+      emailErrorMessage.style.display = "none";
+      continueButton.disabled = false;
+      continueButton.style.backgroundColor = "rgba(97, 57, 255, 1)";
+      continueButton.style.color = "white";
+    } else {
+      emailInput.classList.add("invalid");
+      emailErrorMessage.style.display = "block";
+      continueButton.disabled = true;
+      continueButton.style.backgroundColor = "#333333";
+      continueButton.style.color = "#a4a4a4";
+    }
+  });
+});
+
+// 이메일 폼 전환 및 인증 코드 입력 기능
+document.addEventListener("DOMContentLoaded", () => {
+  const continueButton = document.querySelector(".continue-button");
+  const emailForm = document.querySelector(".email-form");
+  const verifyForm = document.querySelector(".verify-form");
+  const termsText = document.querySelector(".terms-text");
+
+  continueButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    emailForm.classList.remove("active");
+    verifyForm.classList.add("active");
+    termsText.style.display = "none";
+  });
+});
+
+// 인증 코드 입력 필드 관리
+document.addEventListener("DOMContentLoaded", () => {
+  const codeInputs = document.querySelectorAll(".code-input");
+  const verifyButton = document.querySelector(".verify-button");
+
+  codeInputs.forEach((input, index) => {
+    input.addEventListener("input", (e) => {
+      if (e.target.value && index < codeInputs.length - 1) {
+        codeInputs[index + 1].focus();
+      }
+      checkCodeFilled();
+    });
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Backspace" && !e.target.value && index > 0) {
+        codeInputs[index - 1].focus();
+      }
+    });
+  });
+
+  function checkCodeFilled() {
+    const allFilled = Array.from(codeInputs).every(
+      (input) => input.value.trim() !== ""
+    );
+    if (allFilled) {
+      verifyButton.classList.add("active");
+      verifyButton.disabled = false;
+    } else {
+      verifyButton.classList.remove("active");
+      verifyButton.disabled = true;
+    }
+  }
+});
