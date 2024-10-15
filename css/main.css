@@ -616,23 +616,23 @@ form {
 
 /* 각 색상별 제목 스타일 */
 .secondary-wrapper section:nth-of-type(1) .second-section-title {
-  color: #92d8ff; /* 첫 번째 섹션: 파랑 */
+  color: #68b7ff; /* 첫 번째 섹션: 파랑 */
 }
 
 .secondary-wrapper section:nth-of-type(2) .second-section-title {
-  color: #92ffcb; /* 두 번째 섹션: 청록색 */
+  color: #4685ff; /* 두 번째 섹션: 청록색 */
 }
 
 .secondary-wrapper section:nth-of-type(3) .second-section-title {
-  color: #fbfe7b; /* 세 번째 섹션: 노랑 */
+  color: #b947ff; /* 세 번째 섹션: 노랑 */
 }
 
 .secondary-wrapper section:nth-of-type(4) .second-section-title {
-  color: #ffa929; /* 네 번째 섹션: 주황 */
+  color: #e47bfe; /* 네 번째 섹션: 주황 */
 }
 
 .secondary-wrapper section:nth-of-type(5) .second-section-title {
-  color: #ce43ff; /* 다섯 번째 섹션: 보라색 */
+  color: #ff5bf8; /* 다섯 번째 섹션: 보라색 */
 }
 
 /* 서브 섹션의 설명 텍스트 스타일 */
